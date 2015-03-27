@@ -8,38 +8,42 @@ uses
   Classes, SysUtils, db;
 
 type
-  TMyTable = class
+  TMyField = class
+  private
     Caption, Name: string;
+    Width: integer;
+    FieldType: TFieldType;
+  public
+    constructor Create(MyCaption, MyName: string; MyWidth: integer; MyFieldType: TFieldType);
+  end;
+
+  TMyTable = class
+  private
+    Caption, Name: string;
+    MassOfFields: array of TMyField;
+  public
     constructor Create(MyCaption, MyName: string);
   end;
-//
-//  TMyField = class
-//    Caption, Name: string;
-//    Width: integer;
-//    FieldType: TFieldType;
-//    constructor Create(MyCaption, MyName: string; MyWidth: integer; MyFieldType: TFieldType);
-//  end;
 
 var
   MassOfTables: array of TMyTable;
-  //MassOfFields: array of TMyField;
   i, n: integer;
 
 implementation
 
-constructor  TMyTable.Create(MyCaption, MyName: string);
+constructor TMyTable.Create(MyCaption, MyName: string);
   begin
      Caption := MyCaption;
      Name := MyName;
   end;
-//
-//constructor TMyField.Create(MyCaption, MyName: string; MyWidth: integer; MyFieldType: TFieldType);
-//  begin
-//     Caption := MyCaption;
-//     Name := MyName;
-//     Width := MyWidth;
-//     FieldType := MyFieldType;
-//  end;
+
+constructor TMyField.Create(MyCaption, MyName: string; MyWidth: integer; MyFieldType: TFieldType);
+  begin
+     Caption := MyCaption;
+     Name := MyName;
+     Width := MyWidth;
+     FieldType := MyFieldType;
+  end;
 
 initialization
 

@@ -1,11 +1,14 @@
 object TableForm: TTableForm
-  Left = 982
-  Height = 236
-  Top = 28
-  Width = 336
+  Left = 948
+  Height = 240
+  Top = 47
+  Width = 320
   Caption = 'TableForm'
-  ClientHeight = 236
-  ClientWidth = 336
+  ClientHeight = 240
+  ClientWidth = 320
+  Constraints.MinHeight = 240
+  Constraints.MinWidth = 320
+  OnClose = FormClose
   LCLVersion = '1.2.4.0'
   Visible = True
   object DBGrid: TDBGrid
@@ -13,13 +16,17 @@ object TableForm: TTableForm
     AnchorSideTop.Control = Owner
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
     Left = 0
     Height = 190
     Top = 0
-    Width = 336
-    Anchors = [akTop, akLeft, akRight]
+    Width = 320
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    BorderSpacing.Bottom = 50
     Color = clWindow
     Columns = <>
+    DataSource = DataSource
     TabOrder = 0
   end
   object DBNavigator: TDBNavigator
@@ -28,11 +35,11 @@ object TableForm: TTableForm
     AnchorSideTop.Side = asrBottom
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = 8
+    Left = 0
     Height = 26
-    Top = 200
+    Top = 204
     Width = 320
-    Anchors = [akTop, akBottom]
+    Anchors = [akBottom]
     BevelOuter = bvNone
     BorderSpacing.Top = 10
     BorderSpacing.Bottom = 10

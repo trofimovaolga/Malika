@@ -1,8 +1,8 @@
 object Connection: TConnection
   OldCreateOrder = False
   Height = 150
-  HorizontalOffset = 276
-  VerticalOffset = 138
+  HorizontalOffset = 209
+  VerticalOffset = 129
   Width = 150
   object SQLTransaction: TSQLTransaction
     Active = True

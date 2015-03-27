@@ -75,6 +75,7 @@
         <Filename Value="tableform.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="TableForm"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="TableForm"/>
       </Unit5>

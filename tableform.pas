@@ -17,6 +17,7 @@ type
     DBGrid: TDBGrid;
     DBNavigator: TDBNavigator;
     SQLQuery: TSQLQuery;
+    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
   private
     { private declarations }
   public
@@ -35,13 +36,27 @@ implementation
 
 procedure MakeForm(FormID: Integer);
 begin
-  Application.CreateForm(TTableForm, MassOfForms[FormID]);
-  with MassOfForms[FormID] do begin
-    SQLQuery.Close;
-    SQLQuery.SQL.Clear;
-    SQLQuery.SQL.Text := 'Select * from teachers';
-    SQLQuery.Open;
+  if MassOfForms[FormID] = nil then begin
+    Application.CreateForm(TTableForm, MassOfForms[FormID]);
+    with MassOfForms[FormID] do begin
+      Tag := FormID;
+      SQLQuery.Close;
+      SQLQuery.SQL.Text := 'Select * from ' + MassOfTables[FormID].Name;
+      SQLQuery.Open;
+    end;
+  end
+  else begin
+    MassOfForms[FormID].ShowOnTop;
   end;
+  MassOfForms[FormID].Caption := MassOfTables[FormID].Caption;
+end;
+
+{ TTableForm }
+
+procedure TTableForm.FormClose(Sender: TObject; var CloseAction: TCloseAction);
+begin
+  CloseAction := caFree;
+  MassOfForms[Tag] := nil;
 end;
 
 initialization
