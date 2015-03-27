@@ -1,0 +1,25 @@
+object Connection: TConnection
+  OldCreateOrder = False
+  Height = 150
+  HorizontalOffset = 276
+  VerticalOffset = 138
+  Width = 150
+  object SQLTransaction: TSQLTransaction
+    Active = True
+    Database = IBConnection
+    left = 64
+    top = 88
+  end
+  object IBConnection: TIBConnection
+    Connected = True
+    LoginPrompt = False
+    DatabaseName = 'TIMETABLE.FDB'
+    KeepConnection = False
+    Password = 'masterkey'
+    Transaction = SQLTransaction
+    UserName = 'sysdba'
+    LogEvents = []
+    left = 64
+    top = 16
+  end
+end

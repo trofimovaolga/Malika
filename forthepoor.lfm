@@ -1,0 +1,48 @@
+object MainForm: TMainForm
+  Left = 992
+  Height = 240
+  Top = 319
+  Width = 320
+  Caption = 'ForThePoor'
+  ClientHeight = 220
+  ClientWidth = 320
+  Constraints.MinHeight = 240
+  Constraints.MinWidth = 320
+  Menu = MainMenu
+  OnCreate = FormCreate
+  LCLVersion = '1.2.4.0'
+  object Memo: TMemo
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = Owner
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Left = 10
+    Height = 200
+    Top = 10
+    Width = 300
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    BorderSpacing.Left = 10
+    BorderSpacing.Top = 10
+    BorderSpacing.Right = 10
+    BorderSpacing.Bottom = 10
+    ReadOnly = True
+    TabOrder = 0
+  end
+  object MainMenu: TMainMenu
+    left = 144
+    top = 88
+    object Reference: TMenuItem
+      Caption = 'Справочник'
+    end
+    object MenuAbout: TMenuItem
+      Caption = 'О программе'
+      OnClick = MenuAboutClick
+    end
+    object MenuExit: TMenuItem
+      Caption = 'Выход'
+      OnClick = MenuExitClick
+    end
+  end
+end

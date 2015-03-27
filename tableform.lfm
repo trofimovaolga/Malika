@@ -1,0 +1,63 @@
+object TableForm: TTableForm
+  Left = 982
+  Height = 236
+  Top = 28
+  Width = 336
+  Caption = 'TableForm'
+  ClientHeight = 236
+  ClientWidth = 336
+  LCLVersion = '1.2.4.0'
+  Visible = True
+  object DBGrid: TDBGrid
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = Owner
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 0
+    Height = 190
+    Top = 0
+    Width = 336
+    Anchors = [akTop, akLeft, akRight]
+    Color = clWindow
+    Columns = <>
+    TabOrder = 0
+  end
+  object DBNavigator: TDBNavigator
+    AnchorSideLeft.Side = asrCenter
+    AnchorSideTop.Control = DBGrid
+    AnchorSideTop.Side = asrBottom
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Left = 8
+    Height = 26
+    Top = 200
+    Width = 320
+    Anchors = [akTop, akBottom]
+    BevelOuter = bvNone
+    BorderSpacing.Top = 10
+    BorderSpacing.Bottom = 10
+    ChildSizing.EnlargeHorizontal = crsScaleChilds
+    ChildSizing.EnlargeVertical = crsScaleChilds
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 100
+    ClientHeight = 26
+    ClientWidth = 320
+    Options = []
+    TabOrder = 1
+  end
+  object SQLQuery: TSQLQuery
+    FieldDefs = <>
+    Database = Connection.IBConnection
+    Transaction = Connection.SQLTransaction
+    Params = <>
+    left = 24
+    top = 104
+  end
+  object DataSource: TDataSource
+    DataSet = SQLQuery
+    left = 96
+    top = 104
+  end
+end

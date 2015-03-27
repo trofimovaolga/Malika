@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="9"/>
+    <BuildModes Active="Default"/>
+    <Units Count="16">
+      <Unit0>
+        <Filename Value="project1.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="project1"/>
+        <EditorIndex Value="4"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="57" Y="7"/>
+        <UsageCount Value="54"/>
+        <Loaded Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="forthepoor.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="MainForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="ForThePoor"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="0"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="38"/>
+        <CursorPos X="43" Y="54"/>
+        <UsageCount Value="54"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="metaunit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="metaunit"/>
+        <EditorIndex Value="2"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="25"/>
+        <CursorPos X="59" Y="9"/>
+        <UsageCount Value="48"/>
+        <Loaded Value="True"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="tableunit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="TableUnit"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="28" Y="42"/>
+        <UsageCount Value="34"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="connect.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Connection"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="DataModule"/>
+        <UnitName Value="Connect"/>
+        <EditorIndex Value="3"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="1" Y="17"/>
+        <UsageCount Value="26"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="tableform.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="TableForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="TableForm"/>
+        <EditorIndex Value="1"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="59" Y="17"/>
+        <UsageCount Value="25"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="connections.pas"/>
+        <ComponentName Value="DBJoining"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="Connections"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="46" Y="13"/>
+        <UsageCount Value="44"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="formunit.pas"/>
+        <UnitName Value="formunit"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="2"/>
+        <CursorPos X="74" Y="12"/>
+        <UsageCount Value="25"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="C:\lazarus\lcl\include\control.inc"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="2694"/>
+        <CursorPos X="1" Y="2711"/>
+        <UsageCount Value="9"/>
+      </Unit8>
+      <Unit9>
+        <Filename Value="C:\lazarus\lcl\include\customform.inc"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1937"/>
+        <CursorPos X="1" Y="1954"/>
+        <UsageCount Value="10"/>
+      </Unit9>
+      <Unit10>
+        <Filename Value="C:\lazarus\lcl\forms.pp"/>
+        <UnitName Value="Forms"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="684"/>
+        <CursorPos X="3" Y="702"/>
+        <UsageCount Value="11"/>
+      </Unit10>
+      <Unit11>
+        <Filename Value="C:\lazarus\lcl\include\application.inc"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="2155"/>
+        <CursorPos X="8" Y="2162"/>
+        <UsageCount Value="11"/>
+      </Unit11>
+      <Unit12>
+        <Filename Value="C:\lazarus\lcl\menus.pp"/>
+        <UnitName Value="Menus"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="213"/>
+        <CursorPos X="18" Y="230"/>
+        <UsageCount Value="11"/>
+      </Unit12>
+      <Unit13>
+        <Filename Value="C:\lazarus\lcl\include\menuitem.inc"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="757"/>
+        <CursorPos X="26" Y="767"/>
+        <UsageCount Value="10"/>
+      </Unit13>
+      <Unit14>
+        <Filename Value="C:\lazarus\fpc\2.6.4\source\rtl\inc\objpash.inc"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="175"/>
+        <CursorPos X="23" Y="192"/>
+        <UsageCount Value="10"/>
+      </Unit14>
+      <Unit15>
+        <Filename Value="..\..\..\..\..\Downloads\sPaint\mainunit.pas"/>
+        <UnitName Value="MainUnit"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="25" Y="8"/>
+        <UsageCount Value="10"/>
+      </Unit15>
+    </Units>
+    <General>
+      <ActiveWindowIndexAtStart Value="0"/>
+    </General>
+    <JumpHistory Count="29" HistoryIndex="28">
+      <Position1>
+        <Filename Value="tableform.pas"/>
+        <Caret Line="13" Column="48" TopLine="1"/>
+      </Position1>
+      <Position2>
+        <Filename Value="forthepoor.pas"/>
+        <Caret Line="74" Column="33" TopLine="59"/>
+      </Position2>
+      <Position3>
+        <Filename Value="forthepoor.pas"/>
+        <Caret Line="9" Column="69" TopLine="1"/>
+      </Position3>
+      <Position4>
+        <Filename Value="forthepoor.pas"/>
+        <Caret Line="84" Column="13" TopLine="61"/>
+      </Position4>
+      <Position5>
+        <Filename Value="tableform.pas"/>
+        <Caret Line="29" Column="5" TopLine="12"/>
+      </Position5>
+      <Position6>
+        <Filename Value="forthepoor.pas"/>
+        <Caret Line="78" Column="36" TopLine="57"/>
+      </Position6>
+      <Position7>
+        <Filename Value="forthepoor.pas"/>
+        <Caret Line="81" Column="54" TopLine="61"/>
+      </Position7>
+      <Position8>
+        <Filename Value="tableform.pas"/>
+        <Caret Line="36" Column="6" TopLine="12"/>
+      </Position8>
+      <Position9>
+        <Filename Value="tableform.pas"/>
+        <Caret Line="30" Column="3" TopLine="5"/>
+      </Position9>
+      <Position10>
+        <Filename Value="tableform.pas"/>
+        <Caret Line="20" Column="1" TopLine="3"/>
+      </Position10>
+      <Position11>
+        <Filename Value="forthepoor.pas"/>
+        <Caret Line="81" Column="22" TopLine="59"/>
+      </Position11>
+      <Position12>
+        <Filename Value="tableform.pas"/>
+        <Caret Line="20" Column="54" TopLine="14"/>
+      </Position12>
+      <Position13>
+        <Filename Value="forthepoor.pas"/>
+        <Caret Line="55" Column="14" TopLine="28"/>
+      </Position13>
+      <Position14>
+        <Filename Value="forthepoor.pas"/>
+        <Caret Line="52" Column="29" TopLine="35"/>
+      </Position14>
+      <Position15>
+        <Filename Value="forthepoor.pas"/>
+        <Caret Line="47" Column="28" TopLine="35"/>
+      </Position15>
+      <Position16>
+        <Filename Value="forthepoor.pas"/>
+        <Caret Line="54" Column="17" TopLine="35"/>
+      </Position16>
+      <Position17>
+        <Filename Value="forthepoor.pas"/>
+        <Caret Line="52" Column="27" TopLine="35"/>
+      </Position17>
+      <Position18>
+        <Filename Value="forthepoor.pas"/>
+        <Caret Line="47" Column="36" TopLine="30"/>
+      </Position18>
+      <Position19>
+        <Filename Value="forthepoor.pas"/>
+        <Caret Line="52" Column="27" TopLine="35"/>
+      </Position19>
+      <Position20>
+        <Filename Value="tableform.pas"/>
+        <Caret Line="33" Column="7" TopLine="15"/>
+      </Position20>
+      <Position21>
+        <Filename Value="tableform.pas"/>
+        <Caret Line="35" Column="57" TopLine="15"/>
+      </Position21>
+      <Position22>
+        <Filename Value="tableform.pas"/>
+        <Caret Line="36" Column="21" TopLine="15"/>
+      </Position22>
+      <Position23>
+        <Filename Value="forthepoor.pas"/>
+        <Caret Line="52" Column="19" TopLine="35"/>
+      </Position23>
+      <Position24>
+        <Filename Value="forthepoor.pas"/>
+        <Caret Line="60" Column="6" TopLine="43"/>
+      </Position24>
+      <Position25>
+        <Filename Value="tableform.pas"/>
+        <Caret Line="37" Column="40" TopLine="17"/>
+      </Position25>
+      <Position26>
+        <Filename Value="tableform.pas"/>
+        <Caret Line="15" Column="24" TopLine="7"/>
+      </Position26>
+      <Position27>
+        <Filename Value="tableform.pas"/>
+        <Caret Line="37" Column="47" TopLine="17"/>
+      </Position27>
+      <Position28>
+        <Filename Value="project1.lpr"/>
+        <Caret Line="10" Column="31" TopLine="1"/>
+      </Position28>
+      <Position29>
+        <Filename Value="project1.lpr"/>
+        <Caret Line="18" Column="49" TopLine="1"/>
+      </Position29>
+    </JumpHistory>
+  </ProjectSession>
+  <EditorMacros Count="0"/>
+</CONFIG>
