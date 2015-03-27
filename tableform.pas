@@ -44,6 +44,14 @@ begin
       Tag := FormID;
       SQLQuery.Close;
       SQLQuery.SQL.Text := 'Select * from ' + MassOfTables[FormID].Name;
+        for i := 0 to High(MassOfTables[FormID].MassOfFields) do begin
+          if MassOfTables[FormID].MassOfFields[i].JoinTable <> nil then
+            SQLQuery.SQL.Text := SQLQuery.SQL.Text
+              + ' inner join ' + MassOfTables[FormID].MassOfFields[i].JoinTable.Name
+              + ' on ' + MassOfTables[FormID].MassOfFields[i].JoinField
+              + ' = ' + MassOfTables[FormID].MassOfFields[i].Name;
+        end;
+  ShowMessage(SQLQuery.SQL.Text);
       SQLQuery.Open;
       Caption := MassOfTables[FormID].Caption;
     end;

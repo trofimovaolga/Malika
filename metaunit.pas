@@ -8,20 +8,25 @@ uses
   Classes, SysUtils, db;
 
 type
+  TMyTable = class;
+
   TMyField = class
-    Caption, Name: string;
+    Caption: string;
+    Name: string;
     Width: integer;
     FieldType: TFieldType;
-    constructor Create(MyCaption, MyName: string; MyWidth: integer; MyFieldType: TFieldType);
+    JoinTable: TMyTable;
+    JoinField: string;
+    constructor Create(MyCaption, MyName: string; MyWidth: integer;
+      MyFieldType: TFieldType; MyJoinTable: TMyTable; MyJoinField: string);
   end;
-
-  { TMyTable }
 
   TMyTable = class
     Caption, Name: string;
     MassOfFields: array of TMyField;
     constructor Create(MyCaption, MyName: string);
-    function AddField(MyCaption, MyName: string; MyWidth: integer; MyFieldType: TFieldType): TMyField;
+    function AddField(MyCaption, MyName: string; MyWidth: integer;
+      MyFieldType: TFieldType; MyJoinTable: TMyTable = nil; MyJoinField: string = ''): TMyField;
   end;
 
 var
@@ -36,19 +41,22 @@ constructor TMyTable.Create(MyCaption, MyName: string);
   end;
 
 function TMyTable.AddField(MyCaption, MyName: string; MyWidth: integer;
-  MyFieldType: TFieldType): TMyField;
+  MyFieldType: TFieldType; MyJoinTable: TMyTable = nil; MyJoinField: string = ''): TMyField;
 begin
   SetLength(MassOfFields, Length(MassOfFields)+1);
-  MassOfFields[High(MassOfFields)] := TMyField.Create(MyCaption, MyName, MyWidth, MyFieldType);
+  MassOfFields[High(MassOfFields)] := TMyField.Create(MyCaption, MyName, MyWidth, MyFieldType, MyJoinTable, MyJoinField);
   Result := MassOfFields[High(MassOfFields)];
 end;
 
-constructor TMyField.Create(MyCaption, MyName: string; MyWidth: integer; MyFieldType: TFieldType);
+constructor TMyField.Create(MyCaption, MyName: string; MyWidth: integer;
+  MyFieldType: TFieldType; MyJoinTable: TMyTable; MyJoinField: string);
   begin
      Caption := MyCaption;
      Name := MyName;
      Width := MyWidth;
      FieldType := MyFieldType;
+     JoinTable := MyJoinTable;
+     JoinField := MyJoinField;
   end;
 
 initialization
@@ -56,11 +64,7 @@ initialization
 SetLength(MassOfTables, 9);
 
 MassOfTables[0] := TMyTable.Create('Учителя', 'teachers');
-with MassOfTables[0] do begin
-  AddField('id', 'ID', 15, ftInteger);
-  AddField('Имя', 'Name', 100, ftString);
-end;
-MassOfTables[1] := TMyTable.Create('Предметы', 'subjects');
+MassOfTables[1] := TMyTable.Create('Предметы', 'courses');
 with MassOfTables[1] do begin
   AddField('id', 'ID', 15, ftInteger);
   AddField('Имя', 'Name', 100, ftString);
@@ -75,7 +79,7 @@ with MassOfTables[3] do begin
   AddField('id', 'ID', 15, ftInteger);
   AddField('Имя', 'Name', 100, ftString);
 end;
-MassOfTables[4] := TMyTable.Create('Преподаватели предметов', 'teachers_subjects');
+MassOfTables[4] := TMyTable.Create('Преподаватели предметов', 'teachers_courses');
 with MassOfTables[4] do begin
   AddField('id', 'ID', 15, ftInteger);
   AddField('Имя', 'Name', 100, ftString);
@@ -99,6 +103,13 @@ MassOfTables[8] := TMyTable.Create('Расписание', 'lessons');
 with MassOfTables[8] do begin
   AddField('id', 'ID', 15, ftInteger);
   AddField('Имя', 'Name', 100, ftString);
+end;
+
+with MassOfTables[0] do begin
+  //AddField('id', 'ID', 15, ftInteger);
+  //AddField('Имя', 'Name', 100, ftString);
+  AddField('id', 'ID', 100, ftString, MassOfTables[4], 'TEACHER_ID');
+  AddField('id', 'COURSE_ID', 100, ftString, MassOfTables[1], MassOfTables[1].Name+'.ID');
 end;
 
 end.
