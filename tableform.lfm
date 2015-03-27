@@ -51,6 +51,7 @@ object TableForm: TTableForm
     ChildSizing.ControlsPerLine = 100
     ClientHeight = 26
     ClientWidth = 320
+    DataSource = DataSource
     Options = []
     TabOrder = 1
   end

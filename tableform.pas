@@ -51,7 +51,6 @@ begin
               + ' on ' + MassOfTables[FormID].MassOfFields[i].JoinField
               + ' = ' + MassOfTables[FormID].MassOfFields[i].Name;
         end;
-  ShowMessage(SQLQuery.SQL.Text);
       SQLQuery.Open;
       Caption := MassOfTables[FormID].Caption;
     end;

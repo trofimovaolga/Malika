@@ -65,52 +65,54 @@ SetLength(MassOfTables, 9);
 
 MassOfTables[0] := TMyTable.Create('Учителя', 'teachers');
 MassOfTables[1] := TMyTable.Create('Предметы', 'courses');
-with MassOfTables[1] do begin
-  AddField('id', 'ID', 15, ftInteger);
-  AddField('Имя', 'Name', 100, ftString);
-end;
 MassOfTables[2] := TMyTable.Create('Группы', 'groups');
-with MassOfTables[2] do begin
-  AddField('id', 'ID', 15, ftInteger);
-  AddField('Имя', 'Name', 100, ftString);
-end;
 MassOfTables[3] := TMyTable.Create('Аудитории', 'classrooms');
-with MassOfTables[3] do begin
-  AddField('id', 'ID', 15, ftInteger);
-  AddField('Имя', 'Name', 100, ftString);
-end;
 MassOfTables[4] := TMyTable.Create('Преподаватели предметов', 'teachers_courses');
-with MassOfTables[4] do begin
-  AddField('id', 'ID', 15, ftInteger);
-  AddField('Имя', 'Name', 100, ftString);
-end;
-MassOfTables[5] := TMyTable.Create('Предметы группы', 'groups_subjects');
-with MassOfTables[5] do begin
-  AddField('id группы', 'GROUP_ID', 15, ftInteger);
-  AddField('id предмета', 'SUBJECT_ID', 15, ftInteger);
-end;
-MassOfTables[6] := TMyTable.Create('Дни недели', 'weekday');
-with MassOfTables[6] do begin
-  AddField('id', 'ID', 15, ftInteger);
-  AddField('Имя', 'Name', 100, ftString);
-end;
-MassOfTables[7] := TMyTable.Create('Пары', 'pair');
-with MassOfTables[7] do begin
-  AddField('id', 'ID', 15, ftInteger);
-  AddField('Имя', 'Name', 100, ftString);
-end;
+MassOfTables[5] := TMyTable.Create('Предметы группы', 'groups_courses');
+MassOfTables[6] := TMyTable.Create('Дни недели', 'weekdays');
+MassOfTables[7] := TMyTable.Create('Пары', 'pairs');
 MassOfTables[8] := TMyTable.Create('Расписание', 'lessons');
-with MassOfTables[8] do begin
-  AddField('id', 'ID', 15, ftInteger);
-  AddField('Имя', 'Name', 100, ftString);
-end;
+
 
 with MassOfTables[0] do begin
-  //AddField('id', 'ID', 15, ftInteger);
-  //AddField('Имя', 'Name', 100, ftString);
-  AddField('id', 'ID', 100, ftString, MassOfTables[4], 'TEACHER_ID');
-  AddField('id', 'COURSE_ID', 100, ftString, MassOfTables[1], MassOfTables[1].Name+'.ID');
+  AddField('id', 'ID', 25, ftString, MassOfTables[4], 'TEACHER_ID');
+  AddField('Учитель', 'COURSE_ID', 185, ftString, MassOfTables[1], MassOfTables[1].Name + '.ID');
 end;
-
+with MassOfTables[1] do begin
+  AddField('id', 'ID', 25, ftString, MassOfTables[5], 'COURSE_ID');
+  AddField('Предмет', 'GROUP_ID', 185, ftString, MassOfTables[2], MassOfTables[2].Name + '.ID');
+end;
+with MassOfTables[2] do begin
+  AddField('id', 'ID', 25, ftInteger);
+  AddField('Группа', 'Name', 70, ftString);
+end;
+with MassOfTables[3] do begin
+  AddField('id', 'ID', 25, ftInteger);
+  AddField('Аудитория', 'CLASSROOM', 70, ftString);
+end;
+with MassOfTables[4] do begin
+  AddField('id Учителя', 'TEACHER_ID', 65, ftInteger);
+  AddField('id Предмета', 'COURSE_ID', 75, ftInteger);
+end;
+with MassOfTables[5] do begin
+  AddField('id Группы', 'GROUP_ID', 60, ftInteger);
+  AddField('id Предмета', 'COURSE_ID', 75, ftInteger);
+end;
+with MassOfTables[6] do begin
+  AddField('id', 'ID', 25, ftInteger);
+  AddField('День недели', 'WEEKDAY', 80, ftString);
+end;
+with MassOfTables[7] do begin
+  AddField('id', 'ID', 25, ftInteger);
+  AddField('Время', 'PERIOD', 80, ftString);
+end;
+with MassOfTables[8] do begin
+  AddField('id Пары', 'PAIR_ID', 50, ftInteger);
+  AddField('id Дня недели', 'WEEKDAY_ID', 85, ftInteger);
+  AddField('id Группы', 'GROUP_ID', 60, ftInteger);
+  AddField('id Предмета', 'COURSE_ID', 75, ftInteger);
+  AddField('id Аудитории', 'CLASS_ID', 80, ftInteger);
+  AddField('id Учителя', 'TEACHER_ID', 65, ftInteger);
+end;
 end.
 

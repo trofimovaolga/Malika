@@ -13,7 +13,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="67" Y="13"/>
-        <UsageCount Value="61"/>
+        <UsageCount Value="63"/>
         <Loaded Value="True"/>
       </Unit0>
       <Unit1>
@@ -25,11 +25,10 @@
         <UnitName Value="ForThePoor"/>
         <EditorIndex Value="0"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="44"/>
-        <CursorPos X="1" Y="62"/>
-        <UsageCount Value="61"/>
+        <TopLine Value="45"/>
+        <CursorPos X="47" Y="57"/>
+        <UsageCount Value="63"/>
         <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit1>
       <Unit2>
         <Filename Value="metaunit.pas"/>
@@ -38,9 +37,9 @@
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="80"/>
-        <CursorPos X="88" Y="112"/>
-        <UsageCount Value="55"/>
+        <TopLine Value="64"/>
+        <CursorPos X="81" Y="89"/>
+        <UsageCount Value="57"/>
         <Loaded Value="True"/>
       </Unit2>
       <Unit3>
@@ -50,7 +49,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="28" Y="42"/>
-        <UsageCount Value="41"/>
+        <UsageCount Value="43"/>
       </Unit3>
       <Unit4>
         <Filename Value="connect.pas"/>
@@ -63,10 +62,8 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="1" Y="17"/>
-        <ComponentState Value="1"/>
-        <UsageCount Value="33"/>
+        <UsageCount Value="35"/>
         <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit4>
       <Unit5>
         <Filename Value="tableform.pas"/>
@@ -77,11 +74,10 @@
         <UnitName Value="TableForm"/>
         <EditorIndex Value="1"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="46"/>
-        <CursorPos X="33" Y="57"/>
-        <UsageCount Value="32"/>
+        <TopLine Value="45"/>
+        <CursorPos X="46" Y="62"/>
+        <UsageCount Value="34"/>
         <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit5>
       <Unit6>
         <Filename Value="connections.pas"/>
@@ -175,124 +171,124 @@
     </General>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="tableform.pas"/>
-        <Caret Line="52" Column="44" TopLine="23"/>
+        <Filename Value="metaunit.pas"/>
+        <Caret Line="20" Column="19" TopLine="7"/>
       </Position1>
       <Position2>
-        <Filename Value="metaunit.pas"/>
-        <Caret Line="41" Column="36" TopLine="20"/>
+        <Filename Value="tableform.pas"/>
+        <Caret Line="63" Column="21" TopLine="33"/>
       </Position2>
       <Position3>
-        <Filename Value="forthepoor.pas"/>
-        <Caret Line="61" Column="47" TopLine="39"/>
+        <Filename Value="tableform.pas"/>
+        <Caret Line="44" Column="47" TopLine="14"/>
       </Position3>
       <Position4>
         <Filename Value="tableform.pas"/>
-        <Caret Line="21" Column="70" TopLine="1"/>
+        <Caret Line="55" Column="63" TopLine="30"/>
       </Position4>
       <Position5>
-        <Filename Value="metaunit.pas"/>
-        <Caret Line="20" Column="19" TopLine="7"/>
+        <Filename Value="tableform.pas"/>
+        <Caret Line="18" Column="36" TopLine="18"/>
       </Position5>
       <Position6>
         <Filename Value="tableform.pas"/>
-        <Caret Line="63" Column="21" TopLine="33"/>
+        <Caret Line="56" Column="58" TopLine="33"/>
       </Position6>
       <Position7>
-        <Filename Value="tableform.pas"/>
-        <Caret Line="44" Column="47" TopLine="14"/>
+        <Filename Value="metaunit.pas"/>
+        <Caret Line="24" Column="92" TopLine="1"/>
       </Position7>
       <Position8>
-        <Filename Value="tableform.pas"/>
-        <Caret Line="9" Column="38" TopLine="30"/>
+        <Filename Value="metaunit.pas"/>
+        <Caret Line="46" Column="91" TopLine="35"/>
       </Position8>
       <Position9>
         <Filename Value="tableform.pas"/>
-        <Caret Line="55" Column="63" TopLine="30"/>
+        <Caret Line="38" Column="69" TopLine="33"/>
       </Position9>
       <Position10>
-        <Filename Value="tableform.pas"/>
-        <Caret Line="18" Column="36" TopLine="18"/>
+        <Filename Value="forthepoor.pas"/>
+        <Caret Line="44" Column="75" TopLine="39"/>
       </Position10>
       <Position11>
         <Filename Value="tableform.pas"/>
-        <Caret Line="56" Column="58" TopLine="33"/>
+        <Caret Line="41" Column="74" TopLine="30"/>
       </Position11>
       <Position12>
-        <Filename Value="metaunit.pas"/>
-        <Caret Line="24" Column="92" TopLine="1"/>
+        <Filename Value="tableform.pas"/>
+        <Caret Line="50" Column="26" TopLine="32"/>
       </Position12>
       <Position13>
-        <Filename Value="metaunit.pas"/>
-        <Caret Line="46" Column="91" TopLine="35"/>
+        <Filename Value="tableform.pas"/>
+        <Caret Line="51" Column="58" TopLine="33"/>
       </Position13>
       <Position14>
         <Filename Value="tableform.pas"/>
-        <Caret Line="38" Column="69" TopLine="33"/>
+        <Caret Line="48" Column="73" TopLine="34"/>
       </Position14>
       <Position15>
-        <Filename Value="forthepoor.pas"/>
-        <Caret Line="44" Column="75" TopLine="39"/>
+        <Filename Value="tableform.pas"/>
+        <Caret Line="51" Column="16" TopLine="33"/>
       </Position15>
       <Position16>
         <Filename Value="tableform.pas"/>
-        <Caret Line="41" Column="74" TopLine="30"/>
+        <Caret Line="49" Column="32" TopLine="32"/>
       </Position16>
       <Position17>
-        <Filename Value="tableform.pas"/>
-        <Caret Line="50" Column="26" TopLine="32"/>
+        <Filename Value="metaunit.pas"/>
+        <Caret Line="59" Column="8" TopLine="26"/>
       </Position17>
       <Position18>
-        <Filename Value="tableform.pas"/>
-        <Caret Line="51" Column="58" TopLine="33"/>
+        <Filename Value="metaunit.pas"/>
+        <Caret Line="58" Column="18" TopLine="40"/>
       </Position18>
       <Position19>
         <Filename Value="tableform.pas"/>
-        <Caret Line="48" Column="73" TopLine="34"/>
+        <Caret Line="46" Column="22" TopLine="29"/>
       </Position19>
       <Position20>
         <Filename Value="tableform.pas"/>
-        <Caret Line="51" Column="16" TopLine="33"/>
+        <Caret Line="40" Column="76" TopLine="29"/>
       </Position20>
       <Position21>
         <Filename Value="tableform.pas"/>
-        <Caret Line="49" Column="32" TopLine="32"/>
+        <Caret Line="52" Column="131" TopLine="29"/>
       </Position21>
       <Position22>
-        <Filename Value="metaunit.pas"/>
-        <Caret Line="59" Column="8" TopLine="26"/>
+        <Filename Value="tableform.pas"/>
+        <Caret Line="51" Column="56" TopLine="29"/>
       </Position22>
       <Position23>
         <Filename Value="metaunit.pas"/>
-        <Caret Line="58" Column="18" TopLine="40"/>
+        <Caret Line="112" Column="66" TopLine="80"/>
       </Position23>
       <Position24>
-        <Filename Value="tableform.pas"/>
-        <Caret Line="46" Column="22" TopLine="29"/>
+        <Filename Value="metaunit.pas"/>
+        <Caret Line="78" Column="39" TopLine="60"/>
       </Position24>
       <Position25>
         <Filename Value="tableform.pas"/>
-        <Caret Line="40" Column="76" TopLine="29"/>
+        <Caret Line="52" Column="25" TopLine="43"/>
       </Position25>
       <Position26>
-        <Filename Value="tableform.pas"/>
-        <Caret Line="52" Column="131" TopLine="29"/>
+        <Filename Value="metaunit.pas"/>
+        <Caret Line="74" Column="68" TopLine="65"/>
       </Position26>
       <Position27>
-        <Filename Value="tableform.pas"/>
-        <Caret Line="51" Column="56" TopLine="29"/>
+        <Filename Value="metaunit.pas"/>
+        <Caret Line="99" Column="51" TopLine="70"/>
       </Position27>
       <Position28>
         <Filename Value="metaunit.pas"/>
-        <Caret Line="112" Column="66" TopLine="80"/>
+        <Caret Line="103" Column="50" TopLine="73"/>
       </Position28>
       <Position29>
         <Filename Value="metaunit.pas"/>
-        <Caret Line="78" Column="39" TopLine="60"/>
+        <Caret Line="81" Column="48" TopLine="64"/>
       </Position29>
       <Position30>
-        <Filename Value="tableform.pas"/>
-        <Caret Line="52" Column="25" TopLine="43"/>
+        <Filename Value="metaunit.pas"/>
+        <Caret Line="90" Column="56" TopLine="74"/>
       </Position30>
     </JumpHistory>
   </ProjectSession>
