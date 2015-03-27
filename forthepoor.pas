@@ -43,6 +43,7 @@ implementation
 procedure TMainForm.FormCreate(Sender: TObject);
 var
   newitem: TMenuItem;
+  i: integer;
 begin
   for i := 0 to 8 do begin { TODO 1 : autodetect count of tables }
     newitem := TMenuItem.Create(nil);

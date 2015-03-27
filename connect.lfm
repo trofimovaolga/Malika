@@ -3,7 +3,7 @@ object Connection: TConnection
   Height = 150
   HorizontalOffset = 209
   VerticalOffset = 129
-  Width = 150
+  Width = 156
   object SQLTransaction: TSQLTransaction
     Active = True
     Database = IBConnection

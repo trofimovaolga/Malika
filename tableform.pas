@@ -35,6 +35,8 @@ implementation
 {$R *.lfm}
 
 procedure MakeForm(FormID: Integer);
+var
+  i: integer;
 begin
   if MassOfForms[FormID] = nil then begin
     Application.CreateForm(TTableForm, MassOfForms[FormID]);
@@ -43,12 +45,17 @@ begin
       SQLQuery.Close;
       SQLQuery.SQL.Text := 'Select * from ' + MassOfTables[FormID].Name;
       SQLQuery.Open;
+      Caption := MassOfTables[FormID].Caption;
     end;
+    for i := 0 to High(MassOfTables[FormID].MassOfFields) do
+      with MassOfForms[FormID].DBGrid.Columns.Items[i] do begin
+        Title.Caption := MassOfTables[FormID].MassOfFields[i].Caption;
+        Width := MassOfTables[FormID].MassOfFields[i].Width;
+      end;
   end
   else begin
     MassOfForms[FormID].ShowOnTop;
   end;
-  MassOfForms[FormID].Caption := MassOfTables[FormID].Caption;
 end;
 
 { TTableForm }
