@@ -21,12 +21,15 @@ type
       MyFieldType: TFieldType; MyJoinTable: TMyTable; MyJoinField: string);
   end;
 
+  { TMyTable }
+
   TMyTable = class
     Caption, Name: string;
     MassOfFields: array of TMyField;
     constructor Create(MyCaption, MyName: string);
     function AddField(MyCaption, MyName: string; MyWidth: integer;
       MyFieldType: TFieldType; MyJoinTable: TMyTable = nil; MyJoinField: string = ''): TMyField;
+    function GetSQL(): string;
   end;
 
 var
@@ -46,6 +49,19 @@ begin
   SetLength(MassOfFields, Length(MassOfFields)+1);
   MassOfFields[High(MassOfFields)] := TMyField.Create(MyCaption, MyName, MyWidth, MyFieldType, MyJoinTable, MyJoinField);
   Result := MassOfFields[High(MassOfFields)];
+end;
+
+function TMyTable.GetSQL(): string;
+var
+  i: integer;
+begin
+  Result := 'Select * from ' + Name;
+  for i := 0 to High(MassOfFields) do begin
+    if MassOfFields[i].JoinTable <> nil then
+      Result += ' inner join ' + MassOfFields[i].JoinTable.Name
+      + ' on ' + MassOfFields[i].JoinField
+      + ' = ' + MassOfFields[i].Name;
+  end;
 end;
 
 constructor TMyField.Create(MyCaption, MyName: string; MyWidth: integer;

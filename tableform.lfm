@@ -8,9 +8,9 @@ object TableForm: TTableForm
   ClientWidth = 320
   Constraints.MinHeight = 240
   Constraints.MinWidth = 320
+  OnActivate = FormActivate
   OnClose = FormClose
   LCLVersion = '1.2.4.0'
-  Visible = True
   object DBGrid: TDBGrid
     AnchorSideLeft.Control = Owner
     AnchorSideTop.Control = Owner

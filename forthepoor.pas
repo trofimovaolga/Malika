@@ -45,7 +45,7 @@ var
   newitem: TMenuItem;
   i: integer;
 begin
-  for i := 0 to 8 do begin { TODO 1 : autodetect count of tables }
+  for i := 0 to high(MassOfTables) do begin
     newitem := TMenuItem.Create(nil);
     with newitem do begin
       Caption := MassOfTables[i].Caption;
