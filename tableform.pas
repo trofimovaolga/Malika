@@ -64,8 +64,8 @@ begin
   Caption := MassOfTables[Tag].Caption;
   for i := 0 to High(MassOfTables[Tag].MassOfFields) do
     with DBGrid.Columns.Items[i] do begin
-      Title.Caption := MassOfTables[Tag].MassOfFields[i].Caption;
-      Width := MassOfTables[Tag].MassOfFields[i].Width;
+      Title.Caption := MassOfTables[Self.Tag].MassOfFields[i].Caption;
+      Width := MassOfTables[Self.Tag].MassOfFields[i].Width;
     end;
 end;
 

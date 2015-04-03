@@ -17,8 +17,9 @@ type
     FieldType: TFieldType;
     JoinTable: TMyTable;
     JoinField: string;
+    JoinKey: string;
     constructor Create(MyCaption, MyName: string; MyWidth: integer;
-      MyFieldType: TFieldType; MyJoinTable: TMyTable; MyJoinField: string);
+      MyFieldType: TFieldType; MyJoinTable: TMyTable; MyJoinField: string; MyJoinKey: string);
   end;
 
   { TMyTable }
@@ -28,7 +29,7 @@ type
     MassOfFields: array of TMyField;
     constructor Create(MyCaption, MyName: string);
     function AddField(MyCaption, MyName: string; MyWidth: integer;
-      MyFieldType: TFieldType; MyJoinTable: TMyTable = nil; MyJoinField: string = ''): TMyField;
+      MyFieldType: TFieldType; MyJoinTable: TMyTable = nil; MyJoinField: string = ''; MyJoinKey: string): TMyField;
     function GetSQL(): string;
   end;
 
@@ -44,10 +45,10 @@ constructor TMyTable.Create(MyCaption, MyName: string);
   end;
 
 function TMyTable.AddField(MyCaption, MyName: string; MyWidth: integer;
-  MyFieldType: TFieldType; MyJoinTable: TMyTable = nil; MyJoinField: string = ''): TMyField;
+  MyFieldType: TFieldType; MyJoinTable: TMyTable = nil; MyJoinField: string = ''; MyJoinKey: string): TMyField;
 begin
   SetLength(MassOfFields, Length(MassOfFields)+1);
-  MassOfFields[High(MassOfFields)] := TMyField.Create(MyCaption, MyName, MyWidth, MyFieldType, MyJoinTable, MyJoinField);
+  MassOfFields[High(MassOfFields)] := TMyField.Create(MyCaption, MyName, MyWidth, MyFieldType, MyJoinTable, MyJoinField, MyJoinKey);
   Result := MassOfFields[High(MassOfFields)];
 end;
 
@@ -55,17 +56,22 @@ function TMyTable.GetSQL(): string;
 var
   i: integer;
 begin
-  Result := 'Select * from ' + Name;
+  Result := 'Select ';
+  for i := 0 to High(MassOfFields) do begin
+    if i > 0 then Result += ', ';
+    Result += MassOfFields[i].Name;
+  end;
+  Result += '* from ' + Name;
   for i := 0 to High(MassOfFields) do begin
     if MassOfFields[i].JoinTable <> nil then
       Result += ' inner join ' + MassOfFields[i].JoinTable.Name
       + ' on ' + MassOfFields[i].JoinField
-      + ' = ' + MassOfFields[i].Name;
+      + ' = ' + MassOfFields[i].JoinKey;
   end;
 end;
 
 constructor TMyField.Create(MyCaption, MyName: string; MyWidth: integer;
-  MyFieldType: TFieldType; MyJoinTable: TMyTable; MyJoinField: string);
+  MyFieldType: TFieldType; MyJoinTable: TMyTable; MyJoinField: string; MyJoinKey: string);
   begin
      Caption := MyCaption;
      Name := MyName;
@@ -73,6 +79,7 @@ constructor TMyField.Create(MyCaption, MyName: string; MyWidth: integer;
      FieldType := MyFieldType;
      JoinTable := MyJoinTable;
      JoinField := MyJoinField;
+     JoinKey := MyJoinKey;
   end;
 
 initialization
