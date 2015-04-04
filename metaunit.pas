@@ -29,7 +29,7 @@ type
     MassOfFields: array of TMyField;
     constructor Create(MyCaption, MyName: string);
     function AddField(MyCaption, MyName: string; MyWidth: integer;
-      MyFieldType: TFieldType; MyJoinTable: TMyTable = nil; MyJoinField: string = ''; MyJoinKey: string): TMyField;
+      MyFieldType: TFieldType; MyJoinTable: TMyTable = nil; MyJoinField: string = ''; MyJoinKey: string = ''): TMyField;
     function GetSQL(): string;
   end;
 
@@ -45,7 +45,7 @@ constructor TMyTable.Create(MyCaption, MyName: string);
   end;
 
 function TMyTable.AddField(MyCaption, MyName: string; MyWidth: integer;
-  MyFieldType: TFieldType; MyJoinTable: TMyTable = nil; MyJoinField: string = ''; MyJoinKey: string): TMyField;
+  MyFieldType: TFieldType; MyJoinTable: TMyTable = nil; MyJoinField: string = ''; MyJoinKey: string = ''): TMyField;
 begin
   SetLength(MassOfFields, Length(MassOfFields)+1);
   MassOfFields[High(MassOfFields)] := TMyField.Create(MyCaption, MyName, MyWidth, MyFieldType, MyJoinTable, MyJoinField, MyJoinKey);
@@ -59,14 +59,18 @@ begin
   Result := 'Select ';
   for i := 0 to High(MassOfFields) do begin
     if i > 0 then Result += ', ';
-    Result += MassOfFields[i].Name;
+    if MassOfFields[i].JoinTable = nil then
+      Result += Name
+    else
+      Result += MassOfFields[i].JoinTable.Name;
+    Result += '.' + MassOfFields[i].Name;
   end;
-  Result += '* from ' + Name;
+  Result += ' from ' + Name;
   for i := 0 to High(MassOfFields) do begin
     if MassOfFields[i].JoinTable <> nil then
       Result += ' inner join ' + MassOfFields[i].JoinTable.Name
-      + ' on ' + MassOfFields[i].JoinField
-      + ' = ' + MassOfFields[i].JoinKey;
+      + ' on ' + Name + '.' + MassOfFields[i].JoinField
+      + ' = ' + MassOfFields[i].JoinTable.Name + '.' + MassOfFields[i].JoinKey;
   end;
 end;
 
@@ -98,16 +102,16 @@ MassOfTables[8] := TMyTable.Create('Расписание', 'lessons');
 
 
 with MassOfTables[0] do begin
-  AddField('id', 'ID', 25, ftString, MassOfTables[4], 'TEACHER_ID');
-  AddField('Учитель', 'COURSE_ID', 185, ftString, MassOfTables[1], MassOfTables[1].Name + '.ID');
+  AddField('id', 'ID', 25, ftString);
+  AddField('Учитель', 'NAME', 185, ftString);
 end;
 with MassOfTables[1] do begin
-  AddField('id', 'ID', 25, ftString, MassOfTables[5], 'COURSE_ID');
-  AddField('Предмет', 'GROUP_ID', 185, ftString, MassOfTables[2], MassOfTables[2].Name + '.ID');
+  AddField('id', 'ID', 25, ftString);
+  AddField('Предмет', 'NAME', 185, ftString);
 end;
 with MassOfTables[2] do begin
   AddField('id', 'ID', 25, ftInteger);
-  AddField('Группа', 'Name', 70, ftString);
+  AddField('Группа', 'NAME', 70, ftString);
 end;
 with MassOfTables[3] do begin
   AddField('id', 'ID', 25, ftInteger);
@@ -130,12 +134,12 @@ with MassOfTables[7] do begin
   AddField('Время', 'PERIOD', 80, ftString);
 end;
 with MassOfTables[8] do begin
-  AddField('id Пары', 'PAIR_ID', 50, ftInteger);
-  AddField('id Дня недели', 'WEEKDAY_ID', 85, ftInteger);
-  AddField('id Группы', 'GROUP_ID', 60, ftInteger);
-  AddField('id Предмета', 'COURSE_ID', 75, ftInteger);
-  AddField('id Аудитории', 'CLASS_ID', 80, ftInteger);
-  AddField('id Учителя', 'TEACHER_ID', 65, ftInteger);
+  AddField('Время', 'PERIOD', 50, ftInteger, MassOfTables[7], 'PAIR_ID', 'ID');
+  AddField('День недели', 'WEEKDAY', 85, ftInteger, MassOfTables[6], 'WEEKDAY_ID', 'ID');
+  AddField('Группа', 'NAME', 60, ftInteger, MassOfTables[2], 'GROUP_ID', 'ID');
+  AddField('Предмет', 'NAME', 75, ftInteger, MassOfTables[1], 'COURSE_ID', 'ID');
+  AddField('Аудитория', 'CLASSROOM', 80, ftInteger, MassOfTables[3], 'CLASS_ID', 'ID');
+  AddField('Учитель', 'NAME', 65, ftInteger, MassOfTables[0], 'TEACHER_ID', 'ID');
 end;
 end.
 
