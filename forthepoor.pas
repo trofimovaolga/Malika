@@ -5,35 +5,29 @@ unit ForThePoor;
 interface
 
 uses
-  Classes, SysUtils, sqldb, db, FileUtil, Forms, Controls, Graphics, Dialogs,
-  DBGrids, DbCtrls, StdCtrls, Menus, MetaUnit, TableForm, Connect;
+  Classes, SysUtils, sqldb, FileUtil, Forms, Controls, Graphics, Dialogs,
+  DbCtrls, StdCtrls, Menus, ExtCtrls, MetaUnit, TableForm;
 
 type
 
   { TMainForm }
 
   TMainForm = class(TForm)
+    Label1: TLabel;
     MainMenu: TMainMenu;
     Memo: TMemo;
     Reference: TMenuItem;
     MenuAbout: TMenuItem;
     MenuExit: TMenuItem;
     procedure FormCreate(Sender: TObject);
-    procedure MemoMouseDown(Sender: TObject; Button: TMouseButton;
-      Shift: TShiftState; X, Y: Integer);
     procedure MenuAboutClick(Sender: TObject);
     procedure MenuExitClick(Sender: TObject);
-    procedure Error(E: exception);
     procedure MenuItemClick(Sender: TObject);
-  private
-    { private declarations }
-    MemoUsed: boolean;
-  public
-    { public declarations }
   end;
 
 var
   MainForm: TMainForm;
+
 implementation
 
 {$R *.lfm}
@@ -42,33 +36,24 @@ implementation
 
 procedure TMainForm.FormCreate(Sender: TObject);
 var
-  newitem: TMenuItem;
+  NewItem: TMenuItem;
   i: integer;
 begin
-  for i := 0 to high(MassOfTables) do begin
-    newitem := TMenuItem.Create(nil);
-    with newitem do begin
+  for i := 0 to High(MassOfTables) do begin
+    NewItem := TMenuItem.Create(nil);
+    with NewItem do begin
       Caption := MassOfTables[i].Caption;
       Name := MassOfTables[i].Name;
       Tag := i;
       OnClick := @Self.MenuItemClick;
     end;
-    Reference.Add(newitem);
+    Reference.Add(NewItem);
   end;
 end;
 
 procedure TMainForm.MenuItemClick(Sender: TObject);
 begin
   MakeForm((Sender as TMenuItem).tag);
-end;
-
-procedure TMainForm.MemoMouseDown(Sender: TObject; Button: TMouseButton;
-  Shift: TShiftState; X, Y: Integer); inline;
-begin
-  if not MemoUsed then begin
-    Memo.Lines.Text := '';
-    MemoUsed := true;
-  end;
 end;
 
 procedure TMainForm.MenuAboutClick(Sender: TObject);
@@ -79,12 +64,6 @@ end;
 procedure TMainForm.MenuExitClick(Sender: TObject);
 begin
   close;
-end;
-
-procedure TMainForm.Error(E: exception);
-begin
-  Memo.Lines.Text := E.Message;
-  ShowOnTop;
 end;
 
 end.

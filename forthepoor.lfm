@@ -1,11 +1,11 @@
 object MainForm: TMainForm
-  Left = 967
+  Left = 617
   Height = 240
-  Top = 333
-  Width = 320
+  Top = 210
+  Width = 324
   Caption = 'ForThePoor'
   ClientHeight = 220
-  ClientWidth = 320
+  ClientWidth = 324
   Constraints.MinHeight = 240
   Constraints.MinWidth = 320
   Menu = MainMenu
@@ -19,16 +19,31 @@ object MainForm: TMainForm
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
     Left = 10
-    Height = 200
-    Top = 10
-    Width = 300
-    Anchors = [akTop, akLeft, akRight, akBottom]
+    Height = 50
+    Top = 160
+    Width = 304
+    Anchors = [akLeft, akRight, akBottom]
     BorderSpacing.Left = 10
     BorderSpacing.Top = 10
     BorderSpacing.Right = 10
     BorderSpacing.Bottom = 10
     ReadOnly = True
     TabOrder = 0
+  end
+  object Label1: TLabel
+    Left = 32
+    Height = 42
+    Top = 32
+    Width = 248
+    Caption = 'Для выбра интересующей таблицы'#13#10'         кликните "Справочник" '
+    Font.CharSet = RUSSIAN_CHARSET
+    Font.Height = -16
+    Font.Name = 'Segoe UI Light'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    ParentColor = False
+    ParentFont = False
+    WordWrap = True
   end
   object MainMenu: TMainMenu
     left = 144

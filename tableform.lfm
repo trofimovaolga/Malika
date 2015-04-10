@@ -1,71 +1,245 @@
 object TableForm: TTableForm
-  Left = 948
-  Height = 240
-  Top = 47
-  Width = 320
-  Caption = 'TableForm'
-  ClientHeight = 240
-  ClientWidth = 320
-  Constraints.MinHeight = 240
-  Constraints.MinWidth = 320
-  OnActivate = FormActivate
+  Left = 603
+  Height = 450
+  Top = 69
+  Width = 530
+  ClientHeight = 450
+  ClientWidth = 530
+  Constraints.MinHeight = 450
+  Constraints.MinWidth = 530
   OnClose = FormClose
+  OnShow = FormShow
   LCLVersion = '1.2.4.0'
   object DBGrid: TDBGrid
     AnchorSideLeft.Control = Owner
     AnchorSideTop.Control = Owner
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    AnchorSideBottom.Control = Owner
-    AnchorSideBottom.Side = asrBottom
+    AnchorSideBottom.Control = DBNavigator
     Left = 0
-    Height = 190
+    Height = 265
     Top = 0
-    Width = 320
+    Width = 530
     Anchors = [akTop, akLeft, akRight, akBottom]
-    BorderSpacing.Bottom = 50
+    BorderSpacing.Bottom = 8
     Color = clWindow
     Columns = <>
     DataSource = DataSource
     TabOrder = 0
   end
   object DBNavigator: TDBNavigator
-    AnchorSideLeft.Side = asrCenter
+    AnchorSideLeft.Control = Owner
     AnchorSideTop.Control = DBGrid
     AnchorSideTop.Side = asrBottom
-    AnchorSideBottom.Control = Owner
-    AnchorSideBottom.Side = asrBottom
-    Left = 0
-    Height = 26
-    Top = 204
-    Width = 320
-    Anchors = [akBottom]
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = FiltersList
+    Left = 10
+    Height = 30
+    Top = 273
+    Width = 398
+    Anchors = [akLeft, akBottom]
     BevelOuter = bvNone
-    BorderSpacing.Top = 10
-    BorderSpacing.Bottom = 10
+    BorderSpacing.Left = 10
+    BorderSpacing.Top = 8
+    BorderSpacing.Right = 10
+    BorderSpacing.Bottom = 8
     ChildSizing.EnlargeHorizontal = crsScaleChilds
     ChildSizing.EnlargeVertical = crsScaleChilds
     ChildSizing.ShrinkHorizontal = crsScaleChilds
     ChildSizing.ShrinkVertical = crsScaleChilds
     ChildSizing.Layout = cclLeftToRightThenTopToBottom
     ChildSizing.ControlsPerLine = 100
-    ClientHeight = 26
-    ClientWidth = 320
+    ClientHeight = 30
+    ClientWidth = 398
     DataSource = DataSource
     Options = []
     TabOrder = 1
+  end
+  object Retrieve: TButton
+    AnchorSideTop.Control = DBGrid
+    AnchorSideTop.Side = asrBottom
+    AnchorSideBottom.Control = FiltersList
+    Left = 424
+    Height = 30
+    Top = 273
+    Width = 96
+    Anchors = [akLeft, akBottom]
+    BorderSpacing.Top = 8
+    BorderSpacing.Bottom = 8
+    Caption = 'Переполучить'
+    OnClick = RetrieveClick
+    TabOrder = 2
+  end
+  object FiltersList: TListBox
+    AnchorSideTop.Control = DBNavigator
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = FilterFields
+    Left = 8
+    Height = 77
+    Top = 311
+    Width = 512
+    Anchors = [akLeft, akRight, akBottom]
+    ItemHeight = 0
+    OnSelectionChange = FiltersListSelectionChange
+    TabOrder = 3
+  end
+  object FilterFields: TComboBox
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = FiltersList
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = FilterOps
+    AnchorSideBottom.Control = SortField
+    Left = 10
+    Height = 23
+    Top = 393
+    Width = 211
+    Anchors = [akLeft, akRight]
+    BorderSpacing.Left = 10
+    BorderSpacing.Top = 5
+    BorderSpacing.Right = 10
+    ItemHeight = 15
+    OnChange = FilterPartChange
+    Style = csDropDownList
+    TabOrder = 4
+  end
+  object FilterOps: TComboBox
+    AnchorSideLeft.Control = FilterFields
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideRight.Control = FilterConst
+    AnchorSideBottom.Control = SortField
+    Left = 231
+    Height = 23
+    Top = 393
+    Width = 58
+    Anchors = []
+    BorderSpacing.Top = 5
+    ItemHeight = 15
+    ItemIndex = 0
+    Items.Strings = (
+      '='
+      '<>'
+      '>='
+      '<='
+      '>'
+      '<'
+    )
+    OnChange = FilterPartChange
+    Style = csDropDownList
+    TabOrder = 5
+    Text = '='
+  end
+  object FilterConst: TComboBox
+    AnchorSideLeft.Control = FilterOps
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = FiltersList
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 299
+    Height = 23
+    Top = 393
+    Width = 223
+    Anchors = [akLeft, akRight]
+    BorderSpacing.Left = 10
+    BorderSpacing.Top = 5
+    BorderSpacing.Right = 8
+    ItemHeight = 15
+    OnChange = FilterPartChange
+    OnKeyPress = FilterConstKeyPress
+    TabOrder = 6
+  end
+  object AddFilter: TButton
+    AnchorSideTop.Control = FiltersList
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = DeleteFilters
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Left = 293
+    Height = 23
+    Top = 424
+    Width = 112
+    Anchors = [akTop, akRight]
+    BorderSpacing.Top = 36
+    BorderSpacing.Right = 5
+    BorderSpacing.Bottom = 10
+    Caption = 'Добавить фильтр'
+    Constraints.MaxHeight = 23
+    Constraints.MaxWidth = 112
+    OnClick = AddFilterClick
+    TabOrder = 7
+  end
+  object DeleteFilters: TButton
+    AnchorSideTop.Control = FiltersList
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Left = 410
+    Height = 23
+    Top = 424
+    Width = 112
+    Anchors = [akTop, akRight]
+    BorderSpacing.Top = 36
+    BorderSpacing.Right = 8
+    BorderSpacing.Bottom = 10
+    Caption = 'Удалить фильтры'
+    Constraints.MaxHeight = 23
+    Constraints.MaxWidth = 112
+    OnClick = DeleteFiltersClick
+    TabOrder = 8
+  end
+  object SortField: TComboBox
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = FiltersList
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = DescTBox
+    AnchorSideBottom.Side = asrBottom
+    Left = 10
+    Height = 23
+    Top = 424
+    Width = 212
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Left = 10
+    BorderSpacing.Top = 36
+    BorderSpacing.Right = 10
+    BorderSpacing.Bottom = 10
+    Constraints.MaxWidth = 621
+    ItemHeight = 15
+    Items.Strings = (
+      ''
+    )
+    Style = csDropDownList
+    TabOrder = 9
+  end
+  object DescTBox: TToggleBox
+    AnchorSideTop.Control = FilterOps
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = AddFilter
+    Left = 232
+    Height = 23
+    Top = 424
+    Width = 58
+    Anchors = [akTop, akRight]
+    BorderSpacing.Top = 8
+    BorderSpacing.Right = 3
+    Caption = 'DESC'
+    Constraints.MaxHeight = 25
+    TabOrder = 10
   end
   object SQLQuery: TSQLQuery
     FieldDefs = <>
     Database = Connection.IBConnection
     Transaction = Connection.SQLTransaction
     Params = <>
-    left = 24
-    top = 104
+    left = 344
+    top = 40
   end
   object DataSource: TDataSource
     DataSet = SQLQuery
-    left = 96
-    top = 104
+    left = 424
+    top = 40
   end
 end

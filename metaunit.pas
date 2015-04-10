@@ -31,6 +31,7 @@ type
     function AddField(MyCaption, MyName: string; MyWidth: integer;
       MyFieldType: TFieldType; MyJoinTable: TMyTable = nil; MyJoinField: string = ''; MyJoinKey: string = ''): TMyField;
     function GetSQL(): string;
+    function GetFieldName(FieldID: Integer): string;
   end;
 
 var
@@ -39,16 +40,18 @@ var
 implementation
 
 constructor TMyTable.Create(MyCaption, MyName: string);
-  begin
-     Caption := MyCaption;
-     Name := MyName;
-  end;
+begin
+   Caption := MyCaption;
+   Name := MyName;
+end;
 
 function TMyTable.AddField(MyCaption, MyName: string; MyWidth: integer;
-  MyFieldType: TFieldType; MyJoinTable: TMyTable = nil; MyJoinField: string = ''; MyJoinKey: string = ''): TMyField;
+  MyFieldType: TFieldType; MyJoinTable: TMyTable = nil; MyJoinField: string = '';
+  MyJoinKey: string = ''): TMyField;
 begin
-  SetLength(MassOfFields, Length(MassOfFields)+1);
-  MassOfFields[High(MassOfFields)] := TMyField.Create(MyCaption, MyName, MyWidth, MyFieldType, MyJoinTable, MyJoinField, MyJoinKey);
+  SetLength(MassOfFields, Length(MassOfFields) + 1);
+  MassOfFields[High(MassOfFields)] := TMyField.Create(MyCaption, MyName, MyWidth,
+    MyFieldType, MyJoinTable, MyJoinField, MyJoinKey);
   Result := MassOfFields[High(MassOfFields)];
 end;
 
@@ -59,11 +62,7 @@ begin
   Result := 'Select ';
   for i := 0 to High(MassOfFields) do begin
     if i > 0 then Result += ', ';
-    if MassOfFields[i].JoinTable = nil then
-      Result += Name
-    else
-      Result += MassOfFields[i].JoinTable.Name;
-    Result += '.' + MassOfFields[i].Name;
+    Result += GetFieldName(i);
   end;
   Result += ' from ' + Name;
   for i := 0 to High(MassOfFields) do begin
@@ -72,6 +71,15 @@ begin
       + ' on ' + Name + '.' + MassOfFields[i].JoinField
       + ' = ' + MassOfFields[i].JoinTable.Name + '.' + MassOfFields[i].JoinKey;
   end;
+end;
+
+function TMyTable.GetFieldName(FieldID: Integer): string;
+begin
+  if MassOfFields[FieldID].JoinTable = nil then
+    Result := Name
+  else
+    Result := MassOfFields[FieldID].JoinTable.Name;
+  Result += '.' + MassOfFields[FieldID].Name;
 end;
 
 constructor TMyField.Create(MyCaption, MyName: string; MyWidth: integer;
@@ -100,13 +108,12 @@ MassOfTables[6] := TMyTable.Create('Дни недели', 'weekdays');
 MassOfTables[7] := TMyTable.Create('Пары', 'pairs');
 MassOfTables[8] := TMyTable.Create('Расписание', 'lessons');
 
-
 with MassOfTables[0] do begin
-  AddField('id', 'ID', 25, ftString);
+  AddField('id', 'ID', 25, ftInteger);
   AddField('Учитель', 'NAME', 185, ftString);
 end;
 with MassOfTables[1] do begin
-  AddField('id', 'ID', 25, ftString);
+  AddField('id', 'ID', 25, ftInteger);
   AddField('Предмет', 'NAME', 185, ftString);
 end;
 with MassOfTables[2] do begin
@@ -134,12 +141,12 @@ with MassOfTables[7] do begin
   AddField('Время', 'PERIOD', 80, ftString);
 end;
 with MassOfTables[8] do begin
-  AddField('Время', 'PERIOD', 50, ftInteger, MassOfTables[7], 'PAIR_ID', 'ID');
-  AddField('День недели', 'WEEKDAY', 85, ftInteger, MassOfTables[6], 'WEEKDAY_ID', 'ID');
-  AddField('Группа', 'NAME', 60, ftInteger, MassOfTables[2], 'GROUP_ID', 'ID');
-  AddField('Предмет', 'NAME', 75, ftInteger, MassOfTables[1], 'COURSE_ID', 'ID');
-  AddField('Аудитория', 'CLASSROOM', 80, ftInteger, MassOfTables[3], 'CLASS_ID', 'ID');
-  AddField('Учитель', 'NAME', 65, ftInteger, MassOfTables[0], 'TEACHER_ID', 'ID');
+  AddField('Время', 'PERIOD', 50, ftString, MassOfTables[7], 'PAIR_ID', 'ID');
+  AddField('День недели', 'WEEKDAY', 85, ftString, MassOfTables[6], 'WEEKDAY_ID', 'ID');
+  AddField('Группа', 'NAME', 60, ftString, MassOfTables[2], 'GROUP_ID', 'ID');
+  AddField('Предмет', 'NAME', 75, ftString, MassOfTables[1], 'COURSE_ID', 'ID');
+  AddField('Аудитория', 'CLASSROOM', 80, ftString, MassOfTables[3], 'CLASS_ID', 'ID');
+  AddField('Учитель', 'NAME', 65, ftString, MassOfTables[0], 'TEACHER_ID', 'ID');
 end;
 end.
 
