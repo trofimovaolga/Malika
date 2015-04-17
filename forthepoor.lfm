@@ -1,9 +1,9 @@
 object MainForm: TMainForm
-  Left = 617
+  Left = 463
   Height = 240
-  Top = 210
+  Top = 206
   Width = 324
-  Caption = 'ForThePoor'
+  Caption = 'Malika'
   ClientHeight = 220
   ClientWidth = 324
   Constraints.MinHeight = 240
@@ -34,8 +34,8 @@ object MainForm: TMainForm
     Left = 32
     Height = 42
     Top = 32
-    Width = 248
-    Caption = 'Для выбра интересующей таблицы'#13#10'         кликните "Справочник" '
+    Width = 257
+    Caption = 'Для выбoра интересующей таблицы'#13#10'         кликните "Справочник" '
     Font.CharSet = RUSSIAN_CHARSET
     Font.Height = -16
     Font.Name = 'Segoe UI Light'
