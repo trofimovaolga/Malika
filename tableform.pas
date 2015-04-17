@@ -10,6 +10,12 @@ uses
 
 type
 
+  TFilter = record
+    Field : Integer;
+    Operation : Integer;
+    Constant : String;
+  end;
+
   { TTableForm }
 
   TTableForm = class(TForm)
@@ -37,19 +43,15 @@ type
     procedure FilterPartChange(Sender: TObject);
     procedure FiltersListSelectionChange(Sender: TObject; User: boolean);
     procedure UpdateFilter(FilterID: Integer);
-  end;
-
-  TFilter = record
-    Field : Integer;
-    Operation : Integer;
-    Constant : String;
+  public
+    MassOfFilters: array of TFilter;
   end;
   
   procedure MakeForm(FormID: Integer);
 
 var
   MassOfForms: array of TTableForm;
-  MassOfFilters: array of TFilter;
+
 
 implementation
 
