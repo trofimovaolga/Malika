@@ -1,7 +1,7 @@
 object TableForm: TTableForm
-  Left = 603
+  Left = 731
   Height = 450
-  Top = 69
+  Top = 37
   Width = 530
   ClientHeight = 450
   ClientWidth = 530
@@ -37,7 +37,7 @@ object TableForm: TTableForm
     Left = 10
     Height = 30
     Top = 273
-    Width = 398
+    Width = 385
     Anchors = [akLeft, akBottom]
     BevelOuter = bvNone
     BorderSpacing.Left = 10
@@ -51,7 +51,7 @@ object TableForm: TTableForm
     ChildSizing.Layout = cclLeftToRightThenTopToBottom
     ChildSizing.ControlsPerLine = 100
     ClientHeight = 30
-    ClientWidth = 398
+    ClientWidth = 385
     DataSource = DataSource
     Options = []
     TabOrder = 1
@@ -60,14 +60,14 @@ object TableForm: TTableForm
     AnchorSideTop.Control = DBGrid
     AnchorSideTop.Side = asrBottom
     AnchorSideBottom.Control = FiltersList
-    Left = 424
+    Left = 400
     Height = 30
     Top = 273
-    Width = 96
+    Width = 120
     Anchors = [akLeft, akBottom]
     BorderSpacing.Top = 8
     BorderSpacing.Bottom = 8
-    Caption = 'Переполучить'
+    Caption = 'Применить'
     OnClick = RetrieveClick
     TabOrder = 2
   end
