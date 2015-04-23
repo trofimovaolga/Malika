@@ -1,7 +1,7 @@
 object TableForm: TTableForm
-  Left = 731
+  Left = 751
   Height = 450
-  Top = 37
+  Top = 34
   Width = 530
   ClientHeight = 450
   ClientWidth = 530
@@ -195,12 +195,13 @@ object TableForm: TTableForm
     AnchorSideLeft.Control = Owner
     AnchorSideTop.Control = FiltersList
     AnchorSideTop.Side = asrBottom
-    AnchorSideRight.Control = DescTBox
+    AnchorSideRight.Control = DescBox
+    AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
     Left = 10
     Height = 23
     Top = 424
-    Width = 212
+    Width = 169
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Left = 10
     BorderSpacing.Top = 36
@@ -214,19 +215,23 @@ object TableForm: TTableForm
     Style = csDropDownList
     TabOrder = 9
   end
-  object DescTBox: TToggleBox
+  object DescBox: TCheckBox
     AnchorSideTop.Control = FilterOps
     AnchorSideTop.Side = asrBottom
     AnchorSideRight.Control = AddFilter
-    Left = 232
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Left = 189
     Height = 23
     Top = 424
-    Width = 58
-    Anchors = [akTop, akRight]
+    Width = 100
+    Anchors = [akTop, akLeft, akRight, akBottom]
     BorderSpacing.Top = 8
-    BorderSpacing.Right = 3
-    Caption = 'DESC'
-    Constraints.MaxHeight = 25
+    BorderSpacing.Right = 4
+    BorderSpacing.Bottom = 3
+    Caption = 'Сортировать ↓'
+    Constraints.MaxHeight = 23
+    Constraints.MinHeight = 23
     TabOrder = 10
   end
   object SQLQuery: TSQLQuery

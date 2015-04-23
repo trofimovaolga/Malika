@@ -79,7 +79,7 @@ begin
     Result := Name
   else
     Result := MassOfFields[FieldID].JoinTable.Name;
-  Result += '.' + MassOfFields[FieldID].Name;
+    Result += '.' + MassOfFields[FieldID].Name;
 end;
 
 constructor TMyField.Create(MyCaption, MyName: string; MyWidth: integer;

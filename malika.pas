@@ -1,4 +1,4 @@
-unit ForThePoor;
+unit Malika;
 
 {$mode objfpc}{$H+}
 
@@ -13,7 +13,6 @@ type
   { TMainForm }
 
   TMainForm = class(TForm)
-    Label1: TLabel;
     MainMenu: TMainMenu;
     Memo: TMemo;
     Reference: TMenuItem;

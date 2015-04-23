@@ -1,13 +1,13 @@
 object MainForm: TMainForm
-  Left = 463
-  Height = 240
-  Top = 206
-  Width = 324
+  Left = 420
+  Height = 150
+  Top = 192
+  Width = 300
   Caption = 'Malika'
-  ClientHeight = 220
-  ClientWidth = 324
-  Constraints.MinHeight = 240
-  Constraints.MinWidth = 320
+  ClientHeight = 130
+  ClientWidth = 300
+  Constraints.MinHeight = 150
+  Constraints.MinWidth = 300
   Menu = MainMenu
   OnCreate = FormCreate
   LCLVersion = '1.2.4.0'
@@ -19,9 +19,9 @@ object MainForm: TMainForm
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
     Left = 10
-    Height = 50
-    Top = 160
-    Width = 304
+    Height = 114
+    Top = 6
+    Width = 280
     Anchors = [akLeft, akRight, akBottom]
     BorderSpacing.Left = 10
     BorderSpacing.Top = 10
@@ -30,24 +30,9 @@ object MainForm: TMainForm
     ReadOnly = True
     TabOrder = 0
   end
-  object Label1: TLabel
-    Left = 32
-    Height = 42
-    Top = 32
-    Width = 257
-    Caption = 'Для выбoра интересующей таблицы'#13#10'         кликните "Справочник" '
-    Font.CharSet = RUSSIAN_CHARSET
-    Font.Height = -16
-    Font.Name = 'Segoe UI Light'
-    Font.Pitch = fpVariable
-    Font.Quality = fqDraft
-    ParentColor = False
-    ParentFont = False
-    WordWrap = True
-  end
   object MainMenu: TMainMenu
-    left = 144
-    top = 88
+    left = 128
+    top = 40
     object Reference: TMenuItem
       Caption = 'Справочник'
     end

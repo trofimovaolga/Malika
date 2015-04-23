@@ -20,6 +20,7 @@ type
 
   TTableForm = class(TForm)
     AddFilter: TButton;
+    DescBox: TCheckBox;
     SortField: TComboBox;
     DeleteFilters: TButton;
     FilterFields: TComboBox;
@@ -31,7 +32,6 @@ type
     DBGrid: TDBGrid;
     DBNavigator: TDBNavigator;
     SQLQuery: TSQLQuery;
-    DescTBox: TToggleBox;
     function GetFilterExpr(FilterID: Integer): string;
     procedure RetrieveData();
     procedure RetrieveClick(Sender: TObject);
@@ -51,7 +51,6 @@ type
 
 var
   MassOfForms: array of TTableForm;
-
 
 implementation
 
@@ -80,13 +79,13 @@ begin
   for i := 0 to High(MassOfFilters) do
   begin
     if i = 0 then Query += ' Where '
-      else Query += ' and ';
+    else Query += ' and ';
     Query += GetFilterExpr(i);
   end;
 
   if SortField.ItemIndex > 0 then begin
     Query += ' Order By ' + MassOfTables[Tag].GetFieldName(SortField.ItemIndex-1);
-    if DescTBox.Checked then Query += ' Desc';
+    if DescBox.Checked then Query += ' Desc';
   end;
 
   SQLQuery.Close;
@@ -151,8 +150,9 @@ begin
     Constant := FilterConst.Text;
 
     if (FilterConst.ItemIndex = -1) and
-       (MassOfTables[Tag].MassOfFields[Field].FieldType = ftString) then
-         Constant := '''' + Constant + '''';
+       (MassOfTables[Tag].MassOfFields[Field].FieldType = ftString)
+    then
+      Constant := '''' + Constant + '''';
   end;
   
   FiltersList.Items.Strings[FilterID] := GetFilterExpr(FilterID);

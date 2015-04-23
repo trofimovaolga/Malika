@@ -39,19 +39,19 @@
         <PackageName Value="LCL"/>
       </Item3>
     </RequiredPackages>
-    <Units Count="6">
+    <Units Count="8">
       <Unit0>
         <Filename Value="project1.lpr"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="project1"/>
       </Unit0>
       <Unit1>
-        <Filename Value="forthepoor.pas"/>
+        <Filename Value="malika.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="MainForm"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <UnitName Value="ForThePoor"/>
+        <UnitName Value="Malika"/>
       </Unit1>
       <Unit2>
         <Filename Value="metaunit.pas"/>
@@ -79,6 +79,19 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="TableForm"/>
       </Unit5>
+      <Unit6>
+        <Filename Value="filter.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Filter"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="EditForm.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FormEdit"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="EditForm"/>
+      </Unit7>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
