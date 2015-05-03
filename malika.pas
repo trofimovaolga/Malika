@@ -39,11 +39,11 @@ var
   NewItem: TMenuItem;
   i: integer;
 begin
-  for i := 0 to High(MassOfTables) do begin
+  for i := 0 to High(ArrOfTables) do begin
     NewItem := TMenuItem.Create(nil);
     with NewItem do begin
-      Caption := MassOfTables[i].Caption;
-      Name := MassOfTables[i].Name;
+      Caption := ArrOfTables[i].Caption;
+      Name := ArrOfTables[i].Name;
       Tag := i;
       OnClick := @Self.MenuItemClick;
     end;

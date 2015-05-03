@@ -6,7 +6,7 @@
     <General>
       <SessionStorage Value="InProjectDir"/>
       <MainUnit Value="0"/>
-      <Title Value="project1"/>
+      <Title Value="Malika"/>
       <ResourceType Value="res"/>
       <UseXPManifest Value="True"/>
       <Icon Value="0"/>
@@ -43,7 +43,6 @@
       <Unit0>
         <Filename Value="project1.lpr"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="project1"/>
       </Unit0>
       <Unit1>
         <Filename Value="malika.pas"/>
@@ -61,7 +60,6 @@
       <Unit3>
         <Filename Value="tableunit.pas"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="TableUnit"/>
       </Unit3>
       <Unit4>
         <Filename Value="connect.pas"/>
@@ -69,7 +67,6 @@
         <ComponentName Value="Connection"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <UnitName Value="Connect"/>
       </Unit4>
       <Unit5>
         <Filename Value="tableform.pas"/>
@@ -82,7 +79,6 @@
       <Unit6>
         <Filename Value="filter.pas"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="Filter"/>
       </Unit6>
       <Unit7>
         <Filename Value="EditForm.pas"/>
@@ -113,21 +109,12 @@
       </Checks>
     </CodeGeneration>
     <Linking>
-      <Debugging>
-        <GenerateDebugInfo Value="False"/>
-      </Debugging>
       <Options>
         <Win32>
           <GraphicApplication Value="True"/>
         </Win32>
       </Options>
     </Linking>
-    <Other>
-      <CompilerMessages>
-        <MsgFileName Value=""/>
-      </CompilerMessages>
-      <CompilerPath Value="$(CompPath)"/>
-    </Other>
   </CompilerOptions>
   <Debugging>
     <Exceptions Count="3">
