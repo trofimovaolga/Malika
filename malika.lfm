@@ -44,9 +44,5 @@ object MainForm: TMainForm
       Caption = 'О программе'
       OnClick = MenuAboutClick
     end
-    object MenuExit: TMenuItem
-      Caption = 'Выход'
-      OnClick = MenuExitClick
-    end
   end
 end

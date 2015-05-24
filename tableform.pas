@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, sqldb, db, FileUtil, Forms, Controls, Graphics, Dialogs,
-  DBGrids, DbCtrls, ExtCtrls, StdCtrls, Menus, MetaUnit, EditForm;
+  DBGrids, DbCtrls, ExtCtrls, StdCtrls, Menus, MetaUnit, EditForm, Clipbrd;
 
 type
 
@@ -96,16 +96,18 @@ begin
   if SortField.ItemIndex > 0 then begin
     with ArrOfTables[Tag] do begin
       if ArrOfFields[SortField.ItemIndex-1].JoinTable = nil then
-        Str := Name
-      else
+        Str := ArrOfFields[SortField.ItemIndex-1].Name
+      else begin
         Str := ArrOfFields[SortField.ItemIndex-1].JoinTable.Name;
         Str += '.' + ArrOfFields[SortField.ItemIndex-1].Order;
+      end;
       Query += ' Order By ' + Str;
       if DescBox.Checked then Query += ' Desc';
     end;
   end;
 
   SQLQuery.Close;
+  Clipboard.AsText:=Query;
   SQLQuery.SQL.Text := Query;
   SQLQuery.Open;
 

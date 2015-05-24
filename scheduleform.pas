@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, types, sqldb, DB, FileUtil, Forms, Controls, Graphics, Dialogs,
-  StdCtrls, ExtCtrls, Grids, MetaUnit, TableForm, Connect;
+  StdCtrls, ExtCtrls, Grids, MetaUnit, TableForm, Connect, Clipbrd;
 
 type
   TFieldsValues = array [0..ScheduleFildsNum + 1] of string;
@@ -101,10 +101,8 @@ begin
     end;
   end;
 
-  SetLength(GridData[Hor + 1][Vert + 1].GridElem,
-    Length(GridData[Hor + 1][Vert + 1].GridElem) + 1);
-  GridData[Hor + 1][Vert + 1].GridElem[High(GridData[Hor + 1][Vert + 1].GridElem)] :=
-    Values;
+  SetLength(GridData[Hor+1][Vert+1].GridElem, Length(GridData[Hor+1][Vert+1].GridElem)+1);
+  GridData[Hor+1][Vert+1].GridElem[High(GridData[Hor+1][Vert+1].GridElem)]:= Values;
 end;
 
 procedure TSchedule.UpdateGrid;
@@ -112,6 +110,7 @@ var
   i, j, Vert, Hor: integer;
 begin
   SQLQuery.Close;
+  Clipboard.AsText:=Select + Order;
   SQLQuery.SQL.Text := Select + Order;
   SQLQuery.Open;
 
@@ -159,7 +158,7 @@ begin
       begin
         Str := Format('%s : %s ', [CheckGroup.Items[j],
           GridData[aCol][aRow].GridElem[i][j]]);
-        TDrawGrid(Sender).Canvas.TextOut(aRect.Left + 2, aRect.Top + y, Str);
+        TDrawGrid(Sender).Canvas.TextOut(aRect.Left + 6, aRect.Top + y, Str);
         y += 16;
       end;
     DrawGrid.Canvas.Brush.Style := bsClear;

@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, sqldb, FileUtil, Forms, Controls, Graphics, Dialogs,
-  DbCtrls, StdCtrls, Menus, ExtCtrls, MetaUnit, TableForm, ScheduleForm;
+  DBCtrls, StdCtrls, Menus, ExtCtrls, MetaUnit, TableForm, ScheduleForm;
 
 type
 
@@ -18,10 +18,8 @@ type
     ScheduleMenu: TMenuItem;
     Reference: TMenuItem;
     MenuAbout: TMenuItem;
-    MenuExit: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure MenuAboutClick(Sender: TObject);
-    procedure MenuExitClick(Sender: TObject);
     procedure MenuItemClick(Sender: TObject);
     procedure Exception(Sender: TObject; E: Exception);
     procedure ScheduleMenuClick(Sender: TObject);
@@ -41,9 +39,11 @@ var
   NewItem: TMenuItem;
   i: integer;
 begin
-  for i := 0 to High(ArrOfTables) do begin
+  for i := 0 to High(ArrOfTables) do
+  begin
     NewItem := TMenuItem.Create(nil);
-    with NewItem do begin
+    with NewItem do
+    begin
       Caption := ArrOfTables[i].Caption;
       Name := ArrOfTables[i].Name;
       Tag := i;
@@ -72,12 +72,8 @@ end;
 
 procedure TMainForm.MenuAboutClick(Sender: TObject);
 begin
-  ShowMessage('Разработчик - Трофимова О.Н.'+#13#10+'Преподаватель - Кленин А.С.');
+  ShowMessage('Работа с расписанием в формате базы данных' + #13#10
+                      + 'Разработчик - Трофимова О.Н.' + #13#10
+                      + 'Преподаватель - Кленин А.С.');
 end;
-
-procedure TMainForm.MenuExitClick(Sender: TObject);
-begin
-  close;
-end;
-
 end.

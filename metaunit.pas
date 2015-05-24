@@ -119,15 +119,15 @@ ArrOfTables[8] := TMyTable.Create('Расписание', 'lessons');
 
 with ArrOfTables[0] do begin
   AddField('id', 'ID', 25, ftInteger);
-  AddField('Учитель', 'NAME', 185, ftString);
+  AddField('Учитель', 'TEACHER', 185, ftString);
 end;
 with ArrOfTables[1] do begin
   AddField('id', 'ID', 25, ftInteger);
-  AddField('Предмет', 'NAME', 185, ftString);
+  AddField('Предмет', 'COURSE', 185, ftString);
 end;
 with ArrOfTables[2] do begin
   AddField('id', 'ID', 25, ftInteger);
-  AddField('Группа', 'NAME', 70, ftString);
+  AddField('Группа', 'GROUPS', 70, ftString);
 end;
 with ArrOfTables[3] do begin
   AddField('id', 'ID', 25, ftInteger);
@@ -144,7 +144,7 @@ end;
 with ArrOfTables[6] do begin
   AddField('id', 'ID', 25, ftInteger);
   AddField('День недели', 'WEEKDAY', 80, ftString);
-  AddField('Индекс дня', 'dayindex', 80, ftInteger);
+  AddField('Индекс дня', 'DAYINDEX', 80, ftInteger);
 end;
 with ArrOfTables[7] do begin
   AddField('id', 'ID', 25, ftInteger);
@@ -152,11 +152,11 @@ with ArrOfTables[7] do begin
 end;
 with ArrOfTables[8] do begin
   AddField('id', 'id', 45, ftInteger);
-  AddField('День недели', 'WEEKDAY', 75, ftString, ArrOfTables[6], 'WEEKDAY_ID', 'ID', 'dayindex');
-  AddField('Группа', 'NAME', 60, ftString, ArrOfTables[2], 'GROUP_ID', 'ID', 'NAME');
-  AddField('Предмет', 'NAME', 215, ftString, ArrOfTables[1], 'COURSE_ID', 'ID', 'NAME');
+  AddField('День недели', 'WEEKDAY', 75, ftString, ArrOfTables[6], 'WEEKDAY_ID', 'ID', 'DAYINDEX');
+  AddField('Группа', 'GROUPS', 60, ftString, ArrOfTables[2], 'GROUP_ID', 'ID', 'GROUPS');
+  AddField('Предмет', 'COURSE', 215, ftString, ArrOfTables[1], 'COURSE_ID', 'ID', 'COURSE');
   AddField('Аудитория', 'CLASSROOM', 65, ftString, ArrOfTables[3], 'CLASS_ID', 'ID', 'CLASSROOM');
-  AddField('Учитель', 'NAME', 200, ftString, ArrOfTables[0], 'TEACHER_ID', 'ID', 'NAME');
+  AddField('Учитель', 'TEACHER', 200, ftString, ArrOfTables[0], 'TEACHER_ID', 'ID', 'TEACHER');
 end;
 
 ScheduleTable := ArrOfTables[8];

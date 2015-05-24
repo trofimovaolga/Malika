@@ -1,7 +1,7 @@
 object Schedule: TSchedule
-  Left = 267
+  Left = 481
   Height = 547
-  Top = 102
+  Top = 89
   Width = 901
   Caption = 'Schedule'
   ClientHeight = 547
@@ -68,6 +68,7 @@ object Schedule: TSchedule
     DefaultColWidth = 200
     DefaultRowHeight = 100
     ExtendedSelect = False
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goSmoothScroll, goCellEllipsis]
     TabOrder = 4
     OnDrawCell = DrawGridDrawCell
   end
