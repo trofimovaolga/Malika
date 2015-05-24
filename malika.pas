@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, sqldb, FileUtil, Forms, Controls, Graphics, Dialogs,
-  DbCtrls, StdCtrls, Menus, ExtCtrls, MetaUnit, TableForm;
+  DbCtrls, StdCtrls, Menus, ExtCtrls, MetaUnit, TableForm, ScheduleForm;
 
 type
 
@@ -15,6 +15,7 @@ type
   TMainForm = class(TForm)
     MainMenu: TMainMenu;
     Memo: TMemo;
+    ScheduleMenu: TMenuItem;
     Reference: TMenuItem;
     MenuAbout: TMenuItem;
     MenuExit: TMenuItem;
@@ -23,6 +24,7 @@ type
     procedure MenuExitClick(Sender: TObject);
     procedure MenuItemClick(Sender: TObject);
     procedure Exception(Sender: TObject; E: Exception);
+    procedure ScheduleMenuClick(Sender: TObject);
   end;
 
 var
@@ -61,6 +63,11 @@ procedure TMainForm.Exception(Sender: TObject; E: Exception);
 begin
   ShowOnTop;
   Memo.Text := E.Message;
+end;
+
+procedure TMainForm.ScheduleMenuClick(Sender: TObject);
+begin
+  Schedule.Show;
 end;
 
 procedure TMainForm.MenuAboutClick(Sender: TObject);

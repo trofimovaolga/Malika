@@ -67,7 +67,8 @@ CREATE TABLE groups_courses(
 
 CREATE TABLE weekdays (
 	ID integer primary key,
-	weekday varchar(15)
+	weekday varchar(15),
+	dayindex integer
 	);
 
 SET TERM ^ ;
@@ -167,13 +168,13 @@ INSERT INTO classrooms VALUES (413, 'D413');
 INSERT INTO classrooms VALUES (414, 'D414');
 
 --Дни недели
-INSERT INTO weekdays VALUES (501, 'Monday');
-INSERT INTO weekdays VALUES (502, 'Tuesday');
-INSERT INTO weekdays VALUES (503, 'Wednesday');
-INSERT INTO weekdays VALUES (504, 'Thursday');
-INSERT INTO weekdays VALUES (505, 'Friday');
-INSERT INTO weekdays VALUES (506, 'Satarday');
-INSERT INTO weekdays VALUES (507, 'Sunday');
+INSERT INTO weekdays VALUES (501, 'Monday', 1);
+INSERT INTO weekdays VALUES (502, 'Tuesday', 2);
+INSERT INTO weekdays VALUES (503, 'Wednesday', 3);
+INSERT INTO weekdays VALUES (504, 'Thursday', 4);
+INSERT INTO weekdays VALUES (505, 'Friday', 5);
+INSERT INTO weekdays VALUES (506, 'Satarday', 6);
+INSERT INTO weekdays VALUES (507, 'Sunday', 7);
 
 --Отношение Группы-Предметы
 INSERT INTO groups_courses VALUES (200, 300);

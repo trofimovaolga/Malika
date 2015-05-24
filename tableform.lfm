@@ -1,7 +1,7 @@
 object TableForm: TTableForm
-  Left = 686
+  Left = 600
   Height = 450
-  Top = 90
+  Top = 110
   Width = 530
   ClientHeight = 431
   ClientWidth = 530
@@ -18,7 +18,7 @@ object TableForm: TTableForm
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = DBNavigator
     Left = 0
-    Height = 249
+    Height = 261
     Top = 0
     Width = 530
     Anchors = [akTop, akLeft, akRight, akBottom]
@@ -26,8 +26,6 @@ object TableForm: TTableForm
     Color = clWindow
     Columns = <>
     DataSource = DataSource
-    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgDisableDelete, dgDisableInsert, dgTruncCellHints, dgCellEllipsis]
-    ReadOnly = True
     TabOrder = 0
     OnDblClick = DBGridDblClick
   end
@@ -39,9 +37,9 @@ object TableForm: TTableForm
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = FiltersList
     Left = 10
-    Height = 30
-    Top = 257
-    Width = 382
+    Height = 32
+    Top = 269
+    Width = 376
     Anchors = [akLeft, akBottom]
     BevelOuter = bvNone
     BorderSpacing.Left = 10
@@ -54,8 +52,8 @@ object TableForm: TTableForm
     ChildSizing.ShrinkVertical = crsScaleChilds
     ChildSizing.Layout = cclLeftToRightThenTopToBottom
     ChildSizing.ControlsPerLine = 100
-    ClientHeight = 30
-    ClientWidth = 382
+    ClientHeight = 32
+    ClientWidth = 376
     DataSource = DataSource
     Options = []
     TabOrder = 1
@@ -64,10 +62,10 @@ object TableForm: TTableForm
     AnchorSideTop.Control = DBGrid
     AnchorSideTop.Side = asrBottom
     AnchorSideBottom.Control = FiltersList
-    Left = 400
-    Height = 30
-    Top = 257
-    Width = 120
+    Left = 403
+    Height = 32
+    Top = 269
+    Width = 119
     Anchors = [akLeft, akBottom]
     BorderSpacing.Top = 8
     BorderSpacing.Bottom = 8
@@ -81,9 +79,9 @@ object TableForm: TTableForm
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = FilterFields
     Left = 8
-    Height = 77
-    Top = 295
-    Width = 512
+    Height = 65
+    Top = 309
+    Width = 514
     Anchors = [akLeft, akRight, akBottom]
     ItemHeight = 0
     OnSelectionChange = FiltersListSelectionChange
@@ -97,8 +95,8 @@ object TableForm: TTableForm
     AnchorSideBottom.Control = SortField
     Left = 10
     Height = 21
-    Top = 377
-    Width = 211
+    Top = 379
+    Width = 48
     Anchors = [akLeft, akRight]
     BorderSpacing.Left = 10
     BorderSpacing.Top = 5
@@ -113,10 +111,10 @@ object TableForm: TTableForm
     AnchorSideLeft.Side = asrBottom
     AnchorSideRight.Control = FilterConst
     AnchorSideBottom.Control = SortField
-    Left = 231
+    Left = 68
     Height = 21
-    Top = 377
-    Width = 58
+    Top = 379
+    Width = 56
     Anchors = []
     BorderSpacing.Top = 5
     ItemHeight = 13
@@ -141,10 +139,10 @@ object TableForm: TTableForm
     AnchorSideTop.Side = asrBottom
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    Left = 299
+    Left = 134
     Height = 21
-    Top = 377
-    Width = 223
+    Top = 379
+    Width = 388
     Anchors = [akLeft, akRight]
     BorderSpacing.Left = 10
     BorderSpacing.Top = 5
@@ -160,10 +158,10 @@ object TableForm: TTableForm
     AnchorSideRight.Control = DeleteFilters
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = 293
+    Left = 297
     Height = 23
-    Top = 408
-    Width = 112
+    Top = 410
+    Width = 110
     Anchors = [akTop, akRight]
     BorderSpacing.Top = 36
     BorderSpacing.Right = 5
@@ -181,10 +179,10 @@ object TableForm: TTableForm
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = 410
+    Left = 412
     Height = 23
-    Top = 408
-    Width = 112
+    Top = 410
+    Width = 110
     Anchors = [akTop, akRight]
     BorderSpacing.Top = 36
     BorderSpacing.Right = 8
@@ -204,8 +202,8 @@ object TableForm: TTableForm
     AnchorSideBottom.Side = asrBottom
     Left = 10
     Height = 21
-    Top = 408
-    Width = 169
+    Top = 410
+    Width = 156
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Left = 10
     BorderSpacing.Top = 36
@@ -225,10 +223,10 @@ object TableForm: TTableForm
     AnchorSideRight.Control = AddFilter
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = 189
+    Left = 176
     Height = 23
-    Top = 406
-    Width = 100
+    Top = 408
+    Width = 117
     Anchors = [akTop, akLeft, akRight, akBottom]
     BorderSpacing.Top = 8
     BorderSpacing.Right = 4
@@ -243,17 +241,17 @@ object TableForm: TTableForm
     Database = Connection.IBConnection
     Transaction = Connection.SQLTransaction
     Params = <>
-    left = 344
-    top = 40
+    left = 372
+    top = 513
   end
   object DataSource: TDataSource
     DataSet = SQLQuery
-    left = 424
-    top = 40
+    left = 451
+    top = 513
   end
   object MainMenu: TMainMenu
-    left = 256
-    top = 40
+    left = 286
+    top = 513
     object MenuEdit: TMenuItem
       Caption = 'Правка'
       object MenuAdd: TMenuItem

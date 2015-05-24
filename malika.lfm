@@ -1,16 +1,16 @@
 object MainForm: TMainForm
-  Left = 420
+  Left = 323
   Height = 150
-  Top = 192
+  Top = 184
   Width = 300
   Caption = 'Malika'
-  ClientHeight = 130
+  ClientHeight = 131
   ClientWidth = 300
   Constraints.MinHeight = 150
   Constraints.MinWidth = 300
   Menu = MainMenu
   OnCreate = FormCreate
-  LCLVersion = '1.2.4.0'
+  LCLVersion = '1.4.0.4'
   object Memo: TMemo
     AnchorSideLeft.Control = Owner
     AnchorSideTop.Control = Owner
@@ -20,7 +20,7 @@ object MainForm: TMainForm
     AnchorSideBottom.Side = asrBottom
     Left = 10
     Height = 114
-    Top = 6
+    Top = 7
     Width = 280
     Anchors = [akLeft, akRight, akBottom]
     BorderSpacing.Left = 10
@@ -33,6 +33,10 @@ object MainForm: TMainForm
   object MainMenu: TMainMenu
     left = 128
     top = 40
+    object ScheduleMenu: TMenuItem
+      Caption = 'Расписание'
+      OnClick = ScheduleMenuClick
+    end
     object Reference: TMenuItem
       Caption = 'Справочник'
     end

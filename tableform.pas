@@ -83,7 +83,7 @@ end;
 procedure TTableForm.RetrieveData;
 var
   i: Integer;
-  Query: String;
+  Query, Str: String;
 begin
   Query := ArrOfTables[Tag].GetSQL();
   for i := 0 to High(ArrOfFilters) do
@@ -94,8 +94,15 @@ begin
   end;
 
   if SortField.ItemIndex > 0 then begin
-    Query += ' Order By ' + ArrOfTables[Tag].GetFieldName(SortField.ItemIndex-1);
-    if DescBox.Checked then Query += ' Desc';
+    with ArrOfTables[Tag] do begin
+      if ArrOfFields[SortField.ItemIndex-1].JoinTable = nil then
+        Str := Name
+      else
+        Str := ArrOfFields[SortField.ItemIndex-1].JoinTable.Name;
+        Str += '.' + ArrOfFields[SortField.ItemIndex-1].Order;
+      Query += ' Order By ' + Str;
+      if DescBox.Checked then Query += ' Desc';
+    end;
   end;
 
   SQLQuery.Close;

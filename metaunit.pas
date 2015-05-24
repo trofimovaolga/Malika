@@ -6,20 +6,24 @@ interface
 
 uses
   Classes, SysUtils, db;
+const
+  ScheduleFildsNum = 6;
 
 type
   TMyTable = class;
 
+  { TMyField }
+
   TMyField = class
-    Caption: string;
-    Name: string;
+    Caption, Name, Order: string;
     Width: integer;
     FieldType: TFieldType;
     JoinTable: TMyTable;
     JoinField: string;
     JoinKey: string;
     constructor Create(MyCaption, MyName: string; MyWidth: integer;
-      MyFieldType: TFieldType; MyJoinTable: TMyTable; MyJoinField: string; MyJoinKey: string);
+      MyFieldType: TFieldType; MyJoinTable: TMyTable; MyJoinField: string;
+      MyJoinKey: string; MyOrder: string);
   end;
 
   { TMyTable }
@@ -30,13 +34,15 @@ type
     constructor Create(MyCaption, MyName: string);
     function AddField(MyCaption, MyName: string; MyWidth: integer;
              MyFieldType: TFieldType; MyJoinTable: TMyTable = nil;
-             MyJoinField: string = ''; MyJoinKey: string = ''): TMyField;
+             MyJoinField: string = ''; MyJoinKey: string = '';
+             MyOrder: string = ''): TMyField;
     function GetSQL(): string;
     function GetFieldName(FieldID: Integer): string;
   end;
 
 var
   ArrOfTables: array of TMyTable;
+  ScheduleTable: TMyTable;
 
 implementation
 
@@ -47,12 +53,12 @@ begin
 end;
 
 function TMyTable.AddField(MyCaption, MyName: string; MyWidth: integer;
-            MyFieldType: TFieldType; MyJoinTable: TMyTable = nil; MyJoinField:
-            string = ''; MyJoinKey: string = ''): TMyField;
+  MyFieldType: TFieldType; MyJoinTable: TMyTable; MyJoinField: string;
+  MyJoinKey: string; MyOrder: string): TMyField;
 begin
   SetLength(ArrOfFields, Length(ArrOfFields) + 1);
   ArrOfFields[High(ArrOfFields)] := TMyField.Create(MyCaption, MyName, MyWidth,
-                             MyFieldType, MyJoinTable, MyJoinField, MyJoinKey);
+                             MyFieldType, MyJoinTable, MyJoinField, MyJoinKey, MyOrder);
   Result := ArrOfFields[High(ArrOfFields)];
 end;
 
@@ -84,10 +90,12 @@ begin
 end;
 
 constructor TMyField.Create(MyCaption, MyName: string; MyWidth: integer;
-  MyFieldType: TFieldType; MyJoinTable: TMyTable; MyJoinField: string; MyJoinKey: string);
+  MyFieldType: TFieldType; MyJoinTable: TMyTable; MyJoinField: string;
+  MyJoinKey: string; MyOrder: string);
   begin
      Caption := MyCaption;
      Name := MyName;
+     Order := MyOrder;
      Width := MyWidth;
      FieldType := MyFieldType;
      JoinTable := MyJoinTable;
@@ -136,6 +144,7 @@ end;
 with ArrOfTables[6] do begin
   AddField('id', 'ID', 25, ftInteger);
   AddField('День недели', 'WEEKDAY', 80, ftString);
+  AddField('Индекс дня', 'dayindex', 80, ftInteger);
 end;
 with ArrOfTables[7] do begin
   AddField('id', 'ID', 25, ftInteger);
@@ -143,11 +152,13 @@ with ArrOfTables[7] do begin
 end;
 with ArrOfTables[8] do begin
   AddField('id', 'id', 45, ftInteger);
-  AddField('День недели', 'WEEKDAY', 75, ftString, ArrOfTables[6], 'WEEKDAY_ID', 'ID');
-  AddField('Группа', 'NAME', 60, ftString, ArrOfTables[2], 'GROUP_ID', 'ID');
-  AddField('Предмет', 'NAME', 215, ftString, ArrOfTables[1], 'COURSE_ID', 'ID');
-  AddField('Аудитория', 'CLASSROOM', 65, ftString, ArrOfTables[3], 'CLASS_ID', 'ID');
-  AddField('Учитель', 'NAME', 200, ftString, ArrOfTables[0], 'TEACHER_ID', 'ID');
+  AddField('День недели', 'WEEKDAY', 75, ftString, ArrOfTables[6], 'WEEKDAY_ID', 'ID', 'dayindex');
+  AddField('Группа', 'NAME', 60, ftString, ArrOfTables[2], 'GROUP_ID', 'ID', 'NAME');
+  AddField('Предмет', 'NAME', 215, ftString, ArrOfTables[1], 'COURSE_ID', 'ID', 'NAME');
+  AddField('Аудитория', 'CLASSROOM', 65, ftString, ArrOfTables[3], 'CLASS_ID', 'ID', 'CLASSROOM');
+  AddField('Учитель', 'NAME', 200, ftString, ArrOfTables[0], 'TEACHER_ID', 'ID', 'NAME');
 end;
+
+ScheduleTable := ArrOfTables[8];
 end.
 

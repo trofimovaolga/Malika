@@ -76,6 +76,8 @@ end;
 
 constructor TMyEdit.Create(AWidth, AHeight, ATop, ALeft, AID: integer;
   AScrollBox: TScrollBox; AMainT, AMainF: string; AFieldType: TFieldType);
+var
+  i, kId : integer;
 begin
   inherited Create(AScrollBox);
   Parent := AScrollBox;
