@@ -1,9 +1,9 @@
 object TableForm: TTableForm
-  Left = 410
-  Height = 502
-  Top = 72
+  Left = 600
+  Height = 450
+  Top = 110
   Width = 530
-  ClientHeight = 483
+  ClientHeight = 431
   ClientWidth = 530
   Constraints.MinHeight = 450
   Constraints.MinWidth = 530
@@ -18,7 +18,7 @@ object TableForm: TTableForm
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = DBNavigator
     Left = 0
-    Height = 311
+    Height = 261
     Top = 0
     Width = 530
     Anchors = [akTop, akLeft, akRight, akBottom]
@@ -38,7 +38,7 @@ object TableForm: TTableForm
     AnchorSideBottom.Control = FiltersList
     Left = 10
     Height = 32
-    Top = 319
+    Top = 269
     Width = 376
     Anchors = [akLeft, akBottom]
     BevelOuter = bvNone
@@ -64,7 +64,7 @@ object TableForm: TTableForm
     AnchorSideBottom.Control = FiltersList
     Left = 403
     Height = 32
-    Top = 319
+    Top = 269
     Width = 119
     Anchors = [akLeft, akBottom]
     BorderSpacing.Top = 8
@@ -79,8 +79,8 @@ object TableForm: TTableForm
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = FilterFields
     Left = 8
-    Height = 62
-    Top = 359
+    Height = 65
+    Top = 309
     Width = 514
     Anchors = [akLeft, akRight, akBottom]
     ItemHeight = 0
@@ -95,8 +95,8 @@ object TableForm: TTableForm
     AnchorSideBottom.Control = SortField
     Left = 10
     Height = 21
-    Top = 426
-    Width = 156
+    Top = 379
+    Width = 48
     Anchors = [akLeft, akRight]
     BorderSpacing.Left = 10
     BorderSpacing.Top = 5
@@ -111,10 +111,10 @@ object TableForm: TTableForm
     AnchorSideLeft.Side = asrBottom
     AnchorSideRight.Control = FilterConst
     AnchorSideBottom.Control = SortField
-    Left = 176
+    Left = 68
     Height = 21
-    Top = 426
-    Width = 48
+    Top = 379
+    Width = 56
     Anchors = []
     BorderSpacing.Top = 5
     ItemHeight = 13
@@ -139,10 +139,10 @@ object TableForm: TTableForm
     AnchorSideTop.Side = asrBottom
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    Left = 234
+    Left = 134
     Height = 21
-    Top = 426
-    Width = 288
+    Top = 379
+    Width = 388
     Anchors = [akLeft, akRight]
     BorderSpacing.Left = 10
     BorderSpacing.Top = 5
@@ -160,7 +160,7 @@ object TableForm: TTableForm
     AnchorSideBottom.Side = asrBottom
     Left = 297
     Height = 23
-    Top = 457
+    Top = 410
     Width = 110
     Anchors = [akTop, akRight]
     BorderSpacing.Top = 36
@@ -181,7 +181,7 @@ object TableForm: TTableForm
     AnchorSideBottom.Side = asrBottom
     Left = 412
     Height = 23
-    Top = 457
+    Top = 410
     Width = 110
     Anchors = [akTop, akRight]
     BorderSpacing.Top = 36
@@ -202,9 +202,9 @@ object TableForm: TTableForm
     AnchorSideBottom.Side = asrBottom
     Left = 10
     Height = 21
-    Top = 457
+    Top = 410
     Width = 156
-    Anchors = [akTop, akLeft, akRight, akBottom]
+    Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Left = 10
     BorderSpacing.Top = 36
     BorderSpacing.Right = 10
@@ -225,12 +225,12 @@ object TableForm: TTableForm
     AnchorSideBottom.Side = asrBottom
     Left = 176
     Height = 23
-    Top = 455
+    Top = 408
     Width = 117
     Anchors = [akTop, akLeft, akRight, akBottom]
     BorderSpacing.Top = 8
     BorderSpacing.Right = 4
-    BorderSpacing.Bottom = 10
+    BorderSpacing.Bottom = 3
     Caption = 'Сортировать ↓'
     Constraints.MaxHeight = 23
     Constraints.MinHeight = 23
@@ -241,17 +241,17 @@ object TableForm: TTableForm
     Database = Connection.IBConnection
     Transaction = Connection.SQLTransaction
     Params = <>
-    left = 184
-    top = 96
+    left = 372
+    top = 513
   end
   object DataSource: TDataSource
     DataSet = SQLQuery
-    left = 184
-    top = 192
+    left = 451
+    top = 513
   end
   object MainMenu: TMainMenu
-    left = 184
-    top = 16
+    left = 286
+    top = 513
     object MenuEdit: TMenuItem
       Caption = 'Правка'
       object MenuAdd: TMenuItem

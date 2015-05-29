@@ -4,7 +4,7 @@ SET GENERATOR SQL$DEFAULT TO 1000;
 
 CREATE TABLE teachers(
 	ID integer primary key,
-	TEACHER varchar(50)
+	NAME varchar(50)
 	);
 
 SET TERM ^ ;
@@ -17,7 +17,7 @@ END^ SET TERM ; ^
 
 CREATE TABLE courses(
 	ID integer primary key,
-	COURSE varchar(50)
+	NAME varchar(50)
 	);
 
 SET TERM ^ ;
@@ -29,7 +29,7 @@ END^ SET TERM ; ^
 
 CREATE TABLE groups(
 	ID integer primary key,
-	GROUP varchar(50)
+	NAME varchar(50)
 	);
 
 SET TERM ^ ;
@@ -67,8 +67,8 @@ CREATE TABLE groups_courses(
 
 CREATE TABLE weekdays (
 	ID integer primary key,
-	WEEKDAY varchar(15),
-	DAYINDEX integer
+	weekday varchar(15),
+	dayindex integer
 	);
 
 SET TERM ^ ;
@@ -80,8 +80,8 @@ END^ SET TERM ; ^
 
 
 CREATE TABLE pairs(
-	ID integer primary key,
-	PERIOD varchar(50)
+	id integer primary key,
+	period varchar(50)
 	);
 
 SET TERM ^ ;

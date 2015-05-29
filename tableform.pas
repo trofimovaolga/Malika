@@ -60,8 +60,8 @@ type
   
   procedure MakeForm(FormID: Integer);
 
-  var
-    ArrOfForms: array of TTableForm;
+var
+   ArrOfForms: array of TTableForm;
 
 implementation
 
@@ -82,8 +82,8 @@ end;
 
 procedure TTableForm.RetrieveData;
 var
-  i: Integer;
-  Query, Str: String;
+  i: integer;
+  Query, Str: string;
 begin
   Query := ArrOfTables[Tag].GetSQL();
   for i := 0 to High(ArrOfFilters) do
@@ -128,8 +128,8 @@ end;
 
 procedure TTableForm.FormShow(Sender: TObject);
 var
-  i: Integer;
-  FieldName: String;
+  i: integer;
+  FieldName: string;
 begin
   Caption := ArrOfTables[Tag].Caption;
   RetrieveData();
@@ -208,10 +208,10 @@ var
   i: integer;
 begin
   for i := 0 to High(ArrFormEdit) do
-      if AId = ArrFormEdit[i].FId then begin
-        ArrFormEdit[i].Show;
-        Exit;
-      end;
+    if AId = ArrFormEdit[i].FId then begin
+      ArrFormEdit[i].Show;
+      Exit;
+    end;
   SetLength(ArrFormEdit, Length(ArrFormEdit) + 1);
   ArrFormEdit[High(ArrFormEdit)] := TFormEdit.Create(ArrOfTables[Tag], AId, @DelCell);
   ArrFormEdit[High(ArrFormEdit)].CreateEditField;
@@ -223,9 +223,9 @@ var
   i, j: integer;
 begin
   for i := 0 to High(ArrFormEdit) do begin
-    if ArrFormEdit[i].FId = Aid then begin //когда находим среди всех элементов массива ту
-      for j:=i+1 to High(ArrFormEdit) do  //которую надо удал., смещаем на позицию те
-        ArrFormEdit[j-1]:= ArrFormEdit[j]; //что идут после удаляемой
+    if ArrFormEdit[i].FId = Aid then begin  //когда находим среди всех элементов массива ту
+      for j := i+1 to High(ArrFormEdit) do  //которую надо удал., смещаем на позицию те
+        ArrFormEdit[j-1]:= ArrFormEdit[j];  //что идут после удаляемой
     end;
   end;
   SetLength(ArrFormEdit,Length(ArrFormEdit) - 1);

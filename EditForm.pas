@@ -9,17 +9,17 @@ uses
   StdCtrls, DbCtrls, metaunit, Connect,Clipbrd;
 
 type
-  TDeleteReference = procedure (id: integer) of object; //явл. методом класса TTableForm
+  TDeleteReference = procedure (id: integer) of object; //явл. методом класса
 
   { TMyComboBox }
 
   TMyComboBox = class(TComboBox)
   private
-    MySqlQuery : TSQLQuery;
+    MySQLQuery : TSQLQuery;
     MyDataSource : TDataSource;
   public
-    DataName : array of String;
-    DataId : array of Integer;
+    DataName : array of string;
+    DataId : array of integer;
     constructor Create(AWidth, AHeight, ATop, ALeft, AID: integer;
       AScrollBox: TScrollBox; ATableName, AFieldName, AMainT, AMainF: string);
   end;
@@ -111,10 +111,10 @@ var
 begin
   inherited Create(AScrollBox);
   Parent := AScrollBox;
-  MySqlQuery := TSQLQuery.Create(AScrollBox);
+  MySQLQuery := TSQLQuery.Create(AScrollBox);
   MyDataSource := TDataSource.Create(AScrollBox);
-  MyDataSource.DataSet := MySqlQuery;
-  with MySqlQuery do begin
+  MyDataSource.DataSet := MySQLQuery;
+  with MySQLQuery do begin
     Transaction := Connection.SQLTransaction;
     DataBase := Connection.IBConnection;
     Close;
@@ -137,10 +137,10 @@ begin
   Items.AddStrings(DataName);
   ReadOnly := True;
   if AID = -1 then Exit;
-  MySqlQuery.Close;
-  MySqlQuery.SQL.Text := Format('Select %s from %s where ID = %d', [AMainF, AMainT, AID]);
-  MySqlQuery.Open;
-  kId := MySqlQuery.FieldByName(AMainF).AsInteger;
+  MySQLQuery.Close;
+  MySQLQuery.SQL.Text := Format('Select %s from %s where ID = %d', [AMainF, AMainT, AID]);
+  MySQLQuery.Open;
+  kId := MySQLQuery.FieldByName(AMainF).AsInteger;
   i := 0;
   while DataId[i] <> kId do Inc(i);
   ItemIndex := i;
@@ -189,28 +189,28 @@ begin
              end;
              if JoinTable <> nil then begin
                  SetLength(ArrComboBox, Length(ArrComboBox)+1);
-                 ArrComboBox[High(ArrComboBox)] := TMyComboBox.Create(300, 100, 40 * i, 100, FId,
-                           ScrollBox, JoinTable.Name, Name, FTable.Name, JoinField);
+                 ArrComboBox[High(ArrComboBox)] := TMyComboBox.Create(300, 100,
+                             40 * i, 100, FId, ScrollBox, JoinTable.Name, Name,
+                             FTable.Name, JoinField);
              end
              else begin
                   SetLength(ArrEdit, Length(ArrEdit) + 1);
-                  ArrEdit[High(ArrEdit)] := TMyEdit.Create(300, 100, 40 * i, 100, FId,
-                           ScrollBox, FTable.Name, Name, FieldType);
+                  ArrEdit[High(ArrEdit)] := TMyEdit.Create(300, 100, 40 * i,
+                         100, FId, ScrollBox, FTable.Name, Name, FieldType);
              end;
         end;
 end;
 
 procedure TFormEdit.BtnOKClick(Sender: TObject);
 var
-  Str: String;
+  Str: string;
   i, j: integer;
 begin
   i := 0;        //бежит по эдитам
   j := 0;        //бежит по комбобоксам
   SQLQuery.Close;
-  if FId = -1 then begin
-      Str := Format('INSERT INTO %s VALUES ( NULL ' ,  //триггер заменит НУЛ на ключ
-          [FTable.Name]);
+  if FId = -1 then begin                        //триггер заменит НУЛ на ключ
+      Str := Format('INSERT INTO %s VALUES ( NULL ', [FTable.Name]);
       while i + j + 1 < Length(FTable.ArrOfFields) do begin
         if FTable.ArrOfFields[i+j+1].JoinTable = nil then begin
           Str += ', :param' + IntToStr(i);

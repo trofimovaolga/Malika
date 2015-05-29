@@ -24,6 +24,8 @@ type
   { TSchedule }
 
   TSchedule = class(TForm)
+    HorzLabel: TLabel;
+    VertLabel: TLabel;
     ScheduleShow: TButton;
     CheckGroup: TCheckGroup;
     HorComboBox: TComboBox;
@@ -33,6 +35,8 @@ type
     SQLQuery: TSQLQuery;
     procedure DrawGridDrawCell(Sender: TObject; aCol, aRow: integer;
       aRect: TRect; aState: TGridDrawState);
+    procedure DrawGridMouseMove(Sender: TObject; Shift: TShiftState; X,
+      Y: Integer);
     procedure ScheduleShowClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure UpdateGrid;
@@ -166,6 +170,12 @@ begin
     DrawGrid.Canvas.Pen.Color := clBlack;
     DrawGrid.Canvas.Line(aRect.Left, aRect.Top + y, aRect.Right, aRect.Top + y);
   end;
+end;
+
+procedure TSchedule.DrawGridMouseMove(Sender: TObject; Shift: TShiftState; X,
+  Y: Integer);
+begin
+  DrawGrid.Hint := '';
 end;
 
 procedure TSchedule.ComboBoxChange(Sender: TObject);
