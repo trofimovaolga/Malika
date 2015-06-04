@@ -69,6 +69,7 @@ object FormEdit: TFormEdit
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Bottom = 50
     TabOrder = 2
+    OnClick = ScrollBoxClick
   end
   object DataSource: TDataSource
     DataSet = SQLQuery

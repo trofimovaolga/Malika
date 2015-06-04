@@ -1,7 +1,7 @@
 object Schedule: TSchedule
-  Left = 365
+  Left = 459
   Height = 547
-  Top = 98
+  Top = 54
   Width = 852
   Caption = 'Schedule'
   ClientHeight = 547
@@ -56,6 +56,22 @@ object Schedule: TSchedule
     Columns = 3
     TabOrder = 3
   end
+  object VertLabel: TLabel
+    Left = 160
+    Height = 13
+    Top = 7
+    Width = 74
+    Caption = 'По вертикали'
+    ParentColor = False
+  end
+  object HorzLabel: TLabel
+    Left = 8
+    Height = 13
+    Top = 7
+    Width = 87
+    Caption = 'По горизонтали'
+    ParentColor = False
+  end
   object DrawGrid: TDrawGrid
     AnchorSideLeft.Control = Owner
     AnchorSideRight.Control = Owner
@@ -74,24 +90,39 @@ object Schedule: TSchedule
     ParentShowHint = False
     ShowHint = True
     TabOrder = 4
+    OnDblClick = DrawGridDblClick
     OnDrawCell = DrawGridDrawCell
     OnMouseMove = DrawGridMouseMove
   end
-  object HorzLabel: TLabel
-    Left = 8
-    Height = 13
-    Top = 7
-    Width = 87
-    Caption = 'По горизонтали'
-    ParentColor = False
+  object BtnDel: TBitBtn
+    Left = 200
+    Height = 16
+    Top = 64
+    Width = 16
+    Caption = '-'
+    OnClick = BtnDelClick
+    TabOrder = 5
+    Visible = False
   end
-  object VertLabel: TLabel
-    Left = 160
-    Height = 13
-    Top = 7
-    Width = 74
-    Caption = 'По вертикали'
-    ParentColor = False
+  object BtnChange: TBitBtn
+    Left = 224
+    Height = 16
+    Top = 64
+    Width = 16
+    Caption = '*'
+    OnClick = BtnChangeClick
+    TabOrder = 6
+    Visible = False
+  end
+  object BtnAdd: TBitBtn
+    Left = 248
+    Height = 16
+    Top = 64
+    Width = 19
+    Caption = '+'
+    OnClick = BtnAddClick
+    TabOrder = 7
+    Visible = False
   end
   object SQLQuery: TSQLQuery
     FieldDefs = <>

@@ -5,15 +5,15 @@ unit TableForm;
 interface
 
 uses
-  Classes, SysUtils, sqldb, db, FileUtil, Forms, Controls, Graphics, Dialogs,
-  DBGrids, DbCtrls, ExtCtrls, StdCtrls, Menus, MetaUnit, EditForm, Clipbrd;
+  Classes, SysUtils, sqldb, DB, FileUtil, Forms, Controls, Graphics, Dialogs,
+  DBGrids, DBCtrls, ExtCtrls, StdCtrls, Menus, MetaUnit, EditForm, Clipbrd;
 
 type
 
   TFilter = record
-    Field : Integer;
-    Operation : Integer;
-    Constant : String;
+    Field: integer;
+    Operation: integer;
+    Constant: string;
   end;
 
   { TTableForm }
@@ -38,7 +38,7 @@ type
     DBNavigator: TDBNavigator;
     SQLQuery: TSQLQuery;
     procedure DBGridDblClick(Sender: TObject);
-    function GetFilterExpr(FilterID: Integer): string;
+    function GetFilterExpr(FilterID: integer): string;
     procedure MenuAddClick(Sender: TObject);
     procedure MenuDelClick(Sender: TObject);
     procedure RetrieveData();
@@ -50,24 +50,21 @@ type
     procedure FilterConstKeyPress(Sender: TObject; var Key: char);
     procedure FilterPartChange(Sender: TObject);
     procedure FiltersListSelectionChange(Sender: TObject; User: boolean);
-    procedure UpdateFilter(FilterID: Integer);
-    procedure AddCell(Aid: integer);
-    procedure DelCell(Aid: integer);
+    procedure UpdateFilter(FilterID: integer);
   public
     ArrOfFilters: array of TFilter;
-    ArrFormEdit : array of TFormEdit;
   end;
-  
-  procedure MakeForm(FormID: Integer);
+
+procedure MakeForm(FormID: integer);
 
 var
-   ArrOfForms: array of TTableForm;
+  ArrOfForms: array of TTableForm;
 
 implementation
 
 {$R *.lfm}
 
-procedure MakeForm(FormID: Integer);
+procedure MakeForm(FormID: integer);
 begin
   if ArrOfForms[FormID] = nil then
   begin
@@ -75,7 +72,8 @@ begin
     ArrOfForms[FormID].Tag := FormID;
     ArrOfForms[FormID].Show;
   end
-  else ArrOfForms[FormID].ShowOnTop;
+  else
+    ArrOfForms[FormID].ShowOnTop;
 end;
 
 { TTableForm }
@@ -88,26 +86,32 @@ begin
   Query := ArrOfTables[Tag].GetSQL();
   for i := 0 to High(ArrOfFilters) do
   begin
-    if i = 0 then Query += ' Where '
-    else Query += ' and ';
+    if i = 0 then
+      Query += ' Where '
+    else
+      Query += ' and ';
     Query += GetFilterExpr(i);
   end;
 
-  if SortField.ItemIndex > 0 then begin
-    with ArrOfTables[Tag] do begin
-      if ArrOfFields[SortField.ItemIndex-1].JoinTable = nil then
-        Str := ArrOfFields[SortField.ItemIndex-1].Name
-      else begin
-        Str := ArrOfFields[SortField.ItemIndex-1].JoinTable.Name;
-        Str += '.' + ArrOfFields[SortField.ItemIndex-1].Order;
+  if SortField.ItemIndex > 0 then
+  begin
+    with ArrOfTables[Tag] do
+    begin
+      if ArrOfFields[SortField.ItemIndex - 1].JoinTable = nil then
+        Str := ArrOfFields[SortField.ItemIndex - 1].Name
+      else
+      begin
+        Str := ArrOfFields[SortField.ItemIndex - 1].JoinTable.Name;
+        Str += '.' + ArrOfFields[SortField.ItemIndex - 1].Order;
       end;
       Query += ' Order By ' + Str;
-      if DescBox.Checked then Query += ' Desc';
+      if DescBox.Checked then
+        Query += ' Desc';
     end;
   end;
 
   SQLQuery.Close;
-  Clipboard.AsText:=Query;
+  Clipboard.AsText := Query;
   SQLQuery.SQL.Text := Query;
   SQLQuery.Open;
 
@@ -151,30 +155,31 @@ begin
   ArrOfForms[Tag] := nil;
 end;
 
-function TTableForm.GetFilterExpr(FilterID: Integer): string;
+function TTableForm.GetFilterExpr(FilterID: integer): string;
 begin
   with ArrOfFilters[FilterID] do
-    Result := ArrOfTables[Tag].GetFieldName(Field)
-            + ' ' + FilterOps.Items.Strings[Operation]
-            + ' ' + Constant;
+    Result := ArrOfTables[Tag].GetFieldName(Field) + ' ' +
+      FilterOps.Items.Strings[Operation] + ' ' + Constant;
 end;
 
 procedure TTableForm.MenuAddClick(Sender: TObject);
 begin
-  AddCell(-1);
+  AddCell(-1, Tag, @RetrieveData);
 end;
 
 procedure TTableForm.MenuDelClick(Sender: TObject);
 var
   ID: string;
 begin
-  if SQLQuery.EOF or (MessageDlgPos('Удалить?', mtWarning, [mbOK,mbCancel], 0,
-     Self.Left + 100, Self.Top + 100) = mrCancel) then Exit;
+  if SQLQuery.EOF or (MessageDlgPos('Удалить?', mtWarning, [mbOK, mbCancel],
+    0, Self.Left + 100, Self.Top + 100) = mrCancel) then
+    Exit;
 
   ID := SQLQuery.FieldByName('ID').AsString;
 
   SQLQuery.Close;
-  SQLQuery.SQL.Text:=Format(' DELETE FROM %s WHERE ID = %s ', [ArrOfTables[Tag].Name,ID]);
+  SQLQuery.SQL.Text := Format(' DELETE FROM %s WHERE ID = %s ',
+    [ArrOfTables[Tag].Name, ID]);
   SQLQuery.ExecSQL;
 
   RetrieveData;
@@ -184,57 +189,30 @@ procedure TTableForm.DBGridDblClick(Sender: TObject);
 var
   id: integer;
 begin
-  if SQLQuery.EOF then Exit;
-  id := SQLQuery.FieldByName('ID').AsInteger;
-  AddCell(id);                                  //станд. ф-я скла вытаскивает
-end;                                            //поле по имени
+  if SQLQuery.EOF then
+    Exit;
+  id := SQLQuery.FieldByName('ID').AsInteger;   //станд. ф-я скла вытаскивает
+  AddCell(id, Tag, @RetrieveData);              //поле по имени
 
-procedure TTableForm.UpdateFilter(FilterID: Integer);
+end;
+
+procedure TTableForm.UpdateFilter(FilterID: integer);
 begin
-  with ArrOfFilters[FilterID] do begin
+  with ArrOfFilters[FilterID] do
+  begin
     Field := FilterFields.ItemIndex;
     Operation := FilterOps.ItemIndex;
     Constant := FilterConst.Text;
     if (FilterConst.ItemIndex = -1) and
-       (ArrOfTables[Tag].ArrOfFields[Field].FieldType = ftString)
-    then
+      (ArrOfTables[Tag].ArrOfFields[Field].FieldType = ftString) then
       Constant := '''' + Constant + '''';
   end;
   FiltersList.Items.Strings[FilterID] := GetFilterExpr(FilterID);
 end;
 
-procedure TTableForm.AddCell(Aid: integer);
-var
-  i: integer;
-begin
-  for i := 0 to High(ArrFormEdit) do
-    if AId = ArrFormEdit[i].FId then begin
-      ArrFormEdit[i].Show;
-      Exit;
-    end;
-  SetLength(ArrFormEdit, Length(ArrFormEdit) + 1);
-  ArrFormEdit[High(ArrFormEdit)] := TFormEdit.Create(ArrOfTables[Tag], AId, @DelCell);
-  ArrFormEdit[High(ArrFormEdit)].CreateEditField;
-  ArrFormEdit[High(ArrFormEdit)].Show;
-end;
-{после ОК убирает закрытую форму из массива открытых форм и обновляет данные в таблице}
-procedure TTableForm.DelCell(Aid: integer);
-var
-  i, j: integer;
-begin
-  for i := 0 to High(ArrFormEdit) do begin
-    if ArrFormEdit[i].FId = Aid then begin  //когда находим среди всех элементов массива ту
-      for j := i+1 to High(ArrFormEdit) do  //которую надо удал., смещаем на позицию те
-        ArrFormEdit[j-1]:= ArrFormEdit[j];  //что идут после удаляемой
-    end;
-  end;
-  SetLength(ArrFormEdit,Length(ArrFormEdit) - 1);
-  RetrieveData;
-end;
-
 procedure TTableForm.AddFilterClick(Sender: TObject);
 begin
-  SetLength(ArrOfFilters, Length(ArrOfFilters)+1);
+  SetLength(ArrOfFilters, Length(ArrOfFilters) + 1);
   FiltersList.Items.Add('');
   FiltersList.ItemIndex := High(ArrOfFilters);
   UpdateFilter(High(ArrOfFilters));
@@ -260,7 +238,8 @@ end;
 procedure TTableForm.FiltersListSelectionChange(Sender: TObject; User: boolean);
 begin
   if User then
-    with ArrOfFilters[FiltersList.ItemIndex] do begin
+    with ArrOfFilters[FiltersList.ItemIndex] do
+    begin
       FilterFields.ItemIndex := Field;
       FilterOps.ItemIndex := Operation;
       FilterConst.Text := Constant;
@@ -268,7 +247,6 @@ begin
 end;
 
 initialization
-
-SetLength(ArrOfForms, 9);
+  SetLength(ArrOfForms, 9);
 
 end.
