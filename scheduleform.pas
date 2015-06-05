@@ -51,6 +51,7 @@ type
     procedure DrawGridDrawCell(Sender: TObject; aCol, aRow: integer;
       aRect: TRect; aState: TGridDrawState);
     procedure DrawGridMouseMove(Sender: TObject; Shift: TShiftState; X, Y: integer);
+    procedure DrawGridLoseFocus(Sender: TObject);
     procedure ScheduleShowClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure UpdateGrid;
@@ -195,6 +196,12 @@ begin
   end;
 end;
 
+procedure TSchedule.DrawGridLoseFocus(Sender: TObject);
+begin
+  MouseCoord := Cord(0, 0, 0);
+  MoveBtn();
+end;
+
 procedure TSchedule.UpdateGrid;
 var
   i, j, Vert, Hor: integer;
@@ -238,8 +245,7 @@ var
   i, j, y: integer;
   Str: string;
 begin
-  if (aCol + aRow = 0) or (Length(GridData) = 0) then
-    Exit;
+  if (aCol + aRow = 0) or (Length(GridData) = 0) then Exit;
   if (aRow = 0) then
   begin
     TDrawGrid(Sender).Canvas.TextOut(aRect.Left, aRect.Top,
@@ -252,7 +258,6 @@ begin
       VertFieldsValues[aRow - 1, 1]);
     Exit;
   end;
-
   y := 0;
   for i := 0 to High(GridData[aCol][aRow].GridElem) do
   begin
@@ -261,14 +266,17 @@ begin
       if (CheckGroup.Checked[j]) and (CheckGroup.CheckEnabled[j]) then
       begin
         Str := Format('%s : %s ', [CheckGroup.Items[j],
-          GridData[aCol][aRow].GridElem[i][j]]);
+                               GridData[aCol][aRow].GridElem[i][j]]);
         TDrawGrid(Sender).Canvas.TextOut(aRect.Left + 6, aRect.Top + y, Str);
         y += TextHeight;
       end;
-    DrawGrid.Canvas.Brush.Style := bsClear;
-    DrawGrid.Canvas.Pen.Style := psDot;
-    DrawGrid.Canvas.Pen.Color := clBlack;
-    DrawGrid.Canvas.Line(aRect.Left, aRect.Top + y, aRect.Right, aRect.Top + y);
+    with DrawGrid.Canvas do
+    begin
+      Brush.Style := bsClear;
+      Pen.Style := psDot;
+      Pen.Color := clBlack;
+      Line(aRect.Left, aRect.Top + y, aRect.Right, aRect.Top + y);
+    end;
     if VisibleFieldNum * TextHeight + y + BtnHeight > DrawGrid.RowHeights[aRow] then
       Break;
   end;
@@ -277,16 +285,18 @@ begin
 end;
 
 procedure TSchedule.DrawGridDblClick(Sender: TObject);
+var
+  Col, Row: integer;
 begin
-  if (MouseCoord.Col * MouseCoord.Row <> 0) and
-    (Length(GridData[MouseCoord.Col][MouseCoord.Row].GridElem) > 0) then
-    if TextHeight * Length(GridData[MouseCoord.Col][MouseCoord.Row].GridElem) *
-      VisibleFieldNum + BtnHeight <> DrawGrid.RowHeights[MouseCoord.Row] then
-      DrawGrid.RowHeights[MouseCoord.Row] :=
-        TextHeight * Length(GridData[MouseCoord.Col]
-        [MouseCoord.Row].GridElem) * VisibleFieldNum + BtnHeight
+  Col := MouseCoord.Col;
+  Row := MouseCoord.Row;
+  if (Col * Row <> 0) and (Length(GridData[Col][Row].GridElem) > 0) then
+    if TextHeight * Length(GridData[Col][Row].GridElem) * VisibleFieldNum +
+       BtnHeight <> DrawGrid.RowHeights[Row] then
+      DrawGrid.RowHeights[Row] := TextHeight * Length(GridData[Col][Row].GridElem)
+                                  * VisibleFieldNum + BtnHeight
     else
-      DrawGrid.RowHeights[MouseCoord.Row] := TextHeight * VisibleFieldNum + BtnHeight;
+      DrawGrid.RowHeights[Row] := TextHeight * VisibleFieldNum + BtnHeight;
   DrawGrid.Invalidate;
 end;
 
@@ -298,8 +308,7 @@ end;
 procedure TSchedule.BtnChangeClick(Sender: TObject);
 begin
   AddCell(StrToInt(GridData[MouseCoord.Col][MouseCoord.Row].GridElem
-    [MouseCoord.Item][0]),
-    8, @UpdateGrid);
+    [MouseCoord.Item][0]), 8, @UpdateGrid);
 end;
 
 procedure TSchedule.BtnDelClick(Sender: TObject);
@@ -331,9 +340,8 @@ function TSchedule.GetArray(AField: TMyField): TAxisElem;
 begin
   SQLQuery.Close;
   SQLQuery.SQL.Text := Format('Select * from %s order by %s asc  ',
-    [AField.JoinTable.Name, AField.Order]);
+                                      [AField.JoinTable.Name, AField.Order]);
   SQLQuery.Open;
-
   while not SQLQuery.EOF do
   begin
     SetLength(Result, Length(Result) + 1);

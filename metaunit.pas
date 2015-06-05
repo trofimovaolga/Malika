@@ -163,15 +163,11 @@ initialization
   with ArrOfTables[8] do
   begin
     AddField('id', 'id', 45, ftInteger);
-    AddField('День недели', 'WEEKDAY', 75, ftString, ArrOfTables[6],
-      'WEEKDAY_ID', 'ID', 'DAYINDEX');
-    AddField('Группа', 'GROUPS', 60, ftString, ArrOfTables[2], 'GROUP_ID', 'ID', 'GROUPS');
-    AddField('Предмет', 'COURSE', 215, ftString, ArrOfTables[1], 'COURSE_ID',
-      'ID', 'COURSE');
-    AddField('Аудитория', 'CLASSROOM', 65, ftString, ArrOfTables[3],
-      'CLASS_ID', 'ID', 'CLASSROOM');
-    AddField('Учитель', 'TEACHER', 200, ftString, ArrOfTables[0],
-      'TEACHER_ID', 'ID', 'TEACHER');
+    AddField('День недели', 'WEEKDAY', 75, ftString, ArrOfTables[6],'WEEKDAY_ID', 'ID', 'DAYINDEX');
+    AddField('Группа', 'GROUPS', 60, ftString, ArrOfTables[2],'GROUP_ID', 'ID', 'GROUPS');
+    AddField('Предмет', 'COURSE', 215, ftString, ArrOfTables[1],'COURSE_ID', 'ID', 'COURSE');
+    AddField('Аудитория', 'CLASSROOM', 65, ftString, ArrOfTables[3],'CLASS_ID', 'ID', 'CLASSROOM');
+    AddField('Учитель', 'TEACHER', 200, ftString, ArrOfTables[0],'TEACHER_ID', 'ID', 'TEACHER');
   end;
 
   ScheduleTable := ArrOfTables[8];

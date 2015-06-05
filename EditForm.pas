@@ -50,7 +50,6 @@ type
     procedure BtnOKClick(Sender: TObject);
     constructor Create(ATable: TMyTable; AId: integer; ARefresh: TRefresh);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
-    procedure ScrollBoxClick(Sender: TObject);
   private
     FTable: TMyTable;
   public
@@ -64,8 +63,8 @@ var
   FormEdit: TFormEdit;
   ArrFormEdit: array of TFormEdit;
 
-procedure AddCell(Aid, ATag: integer; ARefresh: TRefresh);
-procedure DelCell(Aid: integer);
+  procedure AddCell(Aid, ATag: integer; ARefresh: TRefresh);
+  procedure DelCell(Aid: integer);
 
 implementation
 
@@ -205,11 +204,6 @@ procedure TFormEdit.FormClose(Sender: TObject; var CloseAction: TCloseAction);
 begin
   DelCell(FId);
   Refr;
-end;
-
-procedure TFormEdit.ScrollBoxClick(Sender: TObject);
-begin
-
 end;
 
 procedure TFormEdit.BtnCancelClick(Sender: TObject);

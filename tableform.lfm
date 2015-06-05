@@ -26,6 +26,7 @@ object TableForm: TTableForm
     Color = clWindow
     Columns = <>
     DataSource = DataSource
+    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTruncCellHints, dgCellEllipsis, dgThumbTracking]
     TabOrder = 0
     OnDblClick = DBGridDblClick
   end
