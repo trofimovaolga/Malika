@@ -96,10 +96,8 @@ object Schedule: TSchedule
     TabOrder = 4
     OnDblClick = DrawGridDblClick
     OnDrawCell = DrawGridDrawCell
-    OnExit = DrawGridLoseFocus
     OnMouseLeave = DrawGridLoseFocus
     OnMouseMove = DrawGridMouseMove
-    OnTopleftChanged = DrawGridLoseFocus
   end
   object BtnDel: TBitBtn
     Left = 184

@@ -198,8 +198,12 @@ end;
 
 procedure TSchedule.DrawGridLoseFocus(Sender: TObject);
 begin
-  MouseCoord := Cord(0, 0, 0);
-  MoveBtn();
+  if (not BtnAdd.Focused) and (not BtnChange.Focused)
+     and (not BtnDel.Focused) then
+  begin
+    MouseCoord := Cord(0, 0, 0);
+    MoveBtn();
+  end;
 end;
 
 procedure TSchedule.UpdateGrid;
@@ -298,6 +302,7 @@ begin
     else
       DrawGrid.RowHeights[Row] := TextHeight * VisibleFieldNum + BtnHeight;
   DrawGrid.Invalidate;
+  MoveBtn;
 end;
 
 procedure TSchedule.BtnAddClick(Sender: TObject);
