@@ -1,10 +1,10 @@
-CREATE DATABASE 'C:\Malika\TIMETABLE.FDB' user 'SYSDBA' password 'masterkey'; 
+CREATE DATABASE 'C:\Univer\DB\Malika\TIMETABLE.FDB' user 'SYSDBA' password 'masterkey' default character set UTF8; 
 SET GENERATOR SQL$DEFAULT TO 1000;
 
 
 CREATE TABLE teachers(
 	ID integer primary key,
-	NAME varchar(50)
+	TEACHER varchar(50)
 	);
 
 SET TERM ^ ;
@@ -17,7 +17,7 @@ END^ SET TERM ; ^
 
 CREATE TABLE courses(
 	ID integer primary key,
-	NAME varchar(50)
+	COURSE varchar(50)
 	);
 
 SET TERM ^ ;
@@ -29,7 +29,7 @@ END^ SET TERM ; ^
 
 CREATE TABLE groups(
 	ID integer primary key,
-	NAME varchar(50)
+	GROUPS varchar(50)
 	);
 
 SET TERM ^ ;
@@ -67,8 +67,8 @@ CREATE TABLE groups_courses(
 
 CREATE TABLE weekdays (
 	ID integer primary key,
-	weekday varchar(15),
-	dayindex integer
+	WEEKDAY varchar(15),
+	DAYINDEX integer
 	);
 
 SET TERM ^ ;
@@ -80,8 +80,8 @@ END^ SET TERM ; ^
 
 
 CREATE TABLE pairs(
-	id integer primary key,
-	period varchar(50)
+	ID integer primary key,
+	PERIOD varchar(50)
 	);
 
 SET TERM ^ ;
@@ -109,23 +109,23 @@ AS BEGIN
 END^ SET TERM ; ^
 
 --Преподаватели	
-INSERT INTO teachers VALUES (100, 'Juplev Anton Sergeevich');
-INSERT INTO teachers VALUES (101, 'Sporyshev Maksim Sergeevich');
-INSERT INTO teachers VALUES (102, 'Pak Gennadiy Konstantinovich');
-INSERT INTO teachers VALUES (103, 'Klevchikhin Yuriy Aleksandrovich');
-INSERT INTO teachers VALUES (104, 'Klenin Aleksandr Sergeevich');
-INSERT INTO teachers VALUES (105, 'Ludov Igor Yurevich');
-INSERT INTO teachers VALUES (106, 'Mashencev Vladimir Yurevich');
-INSERT INTO teachers VALUES (107, 'Nikolskaya Tatiana Vladimorivna');
-INSERT INTO teachers VALUES (108, 'Odin Obshchiy Fizruk');
-INSERT INTO teachers VALUES (109, 'Davidiv Denis Vitalievich');
-INSERT INTO teachers VALUES (110, 'Dostovalov Valeriy Nikolayevich');
-INSERT INTO teachers VALUES (111, 'Shepeleva Riorita Petrovna');
-INSERT INTO teachers VALUES (112, 'Romanyuk Mariya Aleksandrovna');
-INSERT INTO teachers VALUES (113, 'Pak Tatiana Vladimirovna');
-INSERT INTO teachers VALUES (114, 'Brizitskiy Roman Viktorovich');
-INSERT INTO teachers VALUES (115, 'Pinko Irina Viktorovna');
-INSERT INTO teachers VALUES (116, 'Kravcov Dmitriy Sergeevich');
+INSERT INTO teachers VALUES (100, 'Жуплев Антон Сергеевич');
+INSERT INTO teachers VALUES (101, 'Спорышев Максим Сергеевич');
+INSERT INTO teachers VALUES (102, 'Пак Геннадий Константинович');
+INSERT INTO teachers VALUES (103, 'Клевчихин Юрий Александрович');
+INSERT INTO teachers VALUES (104, 'Кленин Александр Сергеевич');
+INSERT INTO teachers VALUES (105, 'Лудов Игорь Юрьевич');
+INSERT INTO teachers VALUES (106, 'Машенцев Владимир Юрьевич');
+INSERT INTO teachers VALUES (107, 'Никольская Татьяна Владимировна');
+INSERT INTO teachers VALUES (108, 'Физрук');
+INSERT INTO teachers VALUES (109, 'Давыдов Денис Витальевич');
+INSERT INTO teachers VALUES (110, 'Достовалов Валерий Николаевич');
+INSERT INTO teachers VALUES (111, 'Щепелева Риорита Петровна');
+INSERT INTO teachers VALUES (112, 'Романюк Мария Александровна');
+INSERT INTO teachers VALUES (113, 'Пак Татьяна Владимировна');
+INSERT INTO teachers VALUES (114, 'Бризицкий Роман Викторович');
+INSERT INTO teachers VALUES (115, 'Пинько Ирина Викторовна');
+INSERT INTO teachers VALUES (116, 'Кравцов Дмитрий Сергеевич');
 
 --Группы
 INSERT INTO groups VALUES (200, 'b8103a1');
@@ -134,22 +134,22 @@ INSERT INTO groups VALUES (202, 'b8203a1');
 INSERT INTO groups VALUES (203, 'b8203a2');
 
 --Предметы
-INSERT INTO courses VALUES (300, 'Algebra and Geometry');
-INSERT INTO courses VALUES (301, 'Mathematical analysis');
-INSERT INTO courses VALUES (302, 'Workshop on Computer');
-INSERT INTO courses VALUES (303, 'Languages and methods of programming');
-INSERT INTO courses VALUES (304, 'PhysicalEducation');
+INSERT INTO courses VALUES (300, 'Алгебра и геометрия');
+INSERT INTO courses VALUES (301, 'Математический анализ');
+INSERT INTO courses VALUES (302, 'Практикум на ЭВМ');
+INSERT INTO courses VALUES (303, 'Языки и методы программирования');
+INSERT INTO courses VALUES (304, 'Физра');
 INSERT INTO courses VALUES (305, 'English');
-INSERT INTO courses VALUES (306, 'Discrete Mathematics');
-INSERT INTO courses VALUES (307, 'Databases');
-INSERT INTO courses VALUES (308, 'Economy');
-INSERT INTO courses VALUES (309, 'Object-oriented analysis');
-INSERT INTO courses VALUES (310, 'Physics');
-INSERT INTO courses VALUES (311, 'Differential Equations');
-INSERT INTO courses VALUES (312, 'Comprehensive analysis');
-INSERT INTO courses VALUES (313, 'Numerical Methods');
-INSERT INTO courses VALUES (314, 'Life safety');
-INSERT INTO courses VALUES (315, 'Economic theory');
+INSERT INTO courses VALUES (306, 'Дискретная математика');
+INSERT INTO courses VALUES (307, 'Базы данных');
+INSERT INTO courses VALUES (308, 'Экономика');
+INSERT INTO courses VALUES (309, 'Объектно-ориентированный анализ');
+INSERT INTO courses VALUES (310, 'Физика');
+INSERT INTO courses VALUES (311, 'Дифференциальные уравнения');
+INSERT INTO courses VALUES (312, 'Комплексный анализ');
+INSERT INTO courses VALUES (313, 'Численные методы');
+INSERT INTO courses VALUES (314, 'Безопасность жизнедеятельности');
+INSERT INTO courses VALUES (315, 'Теория экономики');
 
 --Аудитории
 INSERT INTO classrooms VALUES (401, 'D401');
@@ -168,13 +168,13 @@ INSERT INTO classrooms VALUES (413, 'D413');
 INSERT INTO classrooms VALUES (414, 'D414');
 
 --Дни недели
-INSERT INTO weekdays VALUES (501, 'Monday', 1);
-INSERT INTO weekdays VALUES (502, 'Tuesday', 2);
-INSERT INTO weekdays VALUES (503, 'Wednesday', 3);
-INSERT INTO weekdays VALUES (504, 'Thursday', 4);
-INSERT INTO weekdays VALUES (505, 'Friday', 5);
-INSERT INTO weekdays VALUES (506, 'Satarday', 6);
-INSERT INTO weekdays VALUES (507, 'Sunday', 7);
+INSERT INTO weekdays VALUES (501, 'Понедельник', 1);
+INSERT INTO weekdays VALUES (502, 'Вторник', 2);
+INSERT INTO weekdays VALUES (503, 'Среда', 3);
+INSERT INTO weekdays VALUES (504, 'Четверг', 4);
+INSERT INTO weekdays VALUES (505, 'Пятница', 5);
+INSERT INTO weekdays VALUES (506, 'Суббота', 6);
+INSERT INTO weekdays VALUES (507, 'Воскресенье', 7);
 
 --Отношение Группы-Предметы
 INSERT INTO groups_courses VALUES (200, 300);
@@ -365,9 +365,3 @@ INSERT INTO lessons VALUES(NULL, 505, 202, 304, 414, 108);
 INSERT INTO lessons VALUES(NULL, 505, 203, 304, 414, 108);
 
 --Суббота
-
-
-
-
-
-	
